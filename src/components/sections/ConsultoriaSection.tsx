@@ -1,20 +1,33 @@
+import { motion } from "framer-motion";
 import Container from "@/components/common/Container";
 import SectionHeading from "@/components/common/SectionHeading";
 import { consultoriaIdealPara, consultoriaTrabajamosEn } from "@/data/siteContent";
+import { fadeInView, sectionReveal, staggerItem, staggerList } from "@/utils/motion";
 
 export default function ConsultoriaSection() {
   return (
-    <section id="consultoria" className="py-16 md:py-24">
+    <motion.section id="consultoria" className="py-16 md:py-24" {...sectionReveal}>
       <Container>
-        <SectionHeading
-          eyebrow="Consultoría"
-          titleSans="Acompañamiento estratégico para organizaciones en "
-          titleSerif="crecimiento."
-          className="mb-10 md:mb-14"
-        />
+        <motion.div {...fadeInView}>
+          <SectionHeading
+            eyebrow="Consultoría"
+            titleSans="Acompañamiento estratégico para organizaciones en "
+            titleSerif="crecimiento."
+            className="mb-10 md:mb-14"
+          />
+        </motion.div>
 
-        <div className="grid gap-5 md:grid-cols-2 md:gap-6">
-          <article className="relative overflow-hidden rounded-2xl bg-primary-light p-6 pb-0 md:p-8 md:pb-0">
+        <motion.div
+          className="grid gap-5 md:grid-cols-2 md:gap-6"
+          variants={staggerList}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          <motion.article
+            variants={staggerItem}
+            className="relative overflow-hidden rounded-2xl bg-primary-light p-6 pb-0 md:p-8 md:pb-0"
+          >
             <h3 className="text-sm font-bold uppercase tracking-wide text-text-dark">Ideal para equipos que</h3>
             <ul className="mt-5 space-y-3 text-sm leading-relaxed text-text-main md:text-base">
               {consultoriaIdealPara.map((item) => (
@@ -30,9 +43,12 @@ export default function ConsultoriaSection() {
               className="mt-6 ml-auto h-36 w-auto object-contain md:h-44"
               loading="lazy"
             />
-          </article>
+          </motion.article>
 
-          <article className="relative overflow-hidden rounded-2xl bg-primary-light p-6 pb-0 md:p-8 md:pb-0">
+          <motion.article
+            variants={staggerItem}
+            className="relative overflow-hidden rounded-2xl bg-primary-light p-6 pb-0 md:p-8 md:pb-0"
+          >
             <h3 className="text-sm font-bold uppercase tracking-wide text-text-dark">Trabajamos juntas/os en</h3>
             <ul className="mt-5 space-y-3 text-sm leading-relaxed text-text-main md:text-base">
               {consultoriaTrabajamosEn.map((item) => (
@@ -48,18 +64,27 @@ export default function ConsultoriaSection() {
               className="mt-6 ml-auto h-36 w-auto object-contain md:h-44"
               loading="lazy"
             />
-          </article>
-        </div>
+          </motion.article>
+        </motion.div>
 
-        <div className="mt-12 md:mt-16">
-          <hr className="border-t border-text-dark/20" />
-          <blockquote className="mx-auto mt-10 max-w-4xl text-center font-serif text-xl italic leading-relaxed text-text-dark md:text-2xl lg:text-[1.75rem]">
-            No soy una freelancer que ejecuta tareas. Soy una socia estratégica que trabaja de cerca con tu equipo y
-            se involucra en el proceso para generar avances{" "}
-            <span className="underline decoration-text-dark/40 underline-offset-4">reales</span>.
+        <motion.div
+          className="mt-16 px-4 md:mt-20 md:px-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="mx-auto mb-10 h-px w-36 bg-text-dark/25 md:mb-4" aria-hidden />
+
+          <blockquote className="mx-auto max-w-3xl text-center font-serif text-xl italic leading-relaxed text-text-dark md:text-2xl lg:text-[1.75rem] lg:leading-snug">
+            No soy una freelancer que ejecuta tareas. Soy una socia estratégica que trabaja de cerca con tu equipo y se
+            involucra en el proceso para{" "}
+            <span className="underline decoration-primary-light decoration-[3px] underline-offset-[5px]">
+              generar avances reales.
+            </span>
           </blockquote>
-        </div>
+        </motion.div>
       </Container>
-    </section>
+    </motion.section>
   );
 }

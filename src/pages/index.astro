@@ -11,10 +11,10 @@ import FooterSection from "@/components/sections/FooterSection";
 <MainLayout>
   <HeroSection client:load />
   <main>
-    <ConsultoriaSection />
-    <ServiciosSection />
-    <ProcesoSection />
-    <SobreMiSection />
+    <ConsultoriaSection client:visible />
+    <ServiciosSection client:visible />
+    <ProcesoSection client:visible />
+    <SobreMiSection client:visible />
   </main>
-  <FooterSection />
+  <FooterSection client:visible />
 </MainLayout>

@@ -33,6 +33,7 @@ export default function SectionHeading({
           className={`text-3xl leading-[1.12] md:text-5xl lg:text-[3.25rem] ${titleClass} ${centered ? "mx-auto" : ""}`}
         >
           {titleSans ? <span className="font-sans font-bold">{titleSans}</span> : null}
+          <br />
           {titleSerif ? <span className="font-serif italic font-medium">{titleSerif}</span> : null}
           {titleSansAfter ? <span className="font-sans font-bold">{titleSansAfter}</span> : null}
         </h2>

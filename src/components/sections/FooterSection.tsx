@@ -1,15 +1,23 @@
+import { motion } from "framer-motion";
 import ButtonCTA from "@/components/common/ButtonCTA";
 import Container from "@/components/common/Container";
 import SectionHeading from "@/components/common/SectionHeading";
 import { siteConfig } from "@/config/site.config";
+import { easeOut, sectionReveal } from "@/utils/motion";
 
 export default function FooterSection() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#1A1A1A] text-white">
+    <motion.footer className="bg-[#1A1A1A] text-white" {...sectionReveal}>
       <Container>
-        <div className="py-16 text-center md:py-24">
+        <motion.div
+          className="py-16 text-center md:py-24"
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.55, ease: easeOut }}
+        >
           <SectionHeading
             eyebrow={undefined}
             titleSans="¿Tu equipo necesita más "
@@ -21,9 +29,15 @@ export default function FooterSection() {
             className="mb-8"
           />
           <ButtonCTA href="#contacto" label="Agenda una reunión" variant="white" icon="none" />
-        </div>
+        </motion.div>
 
-        <div className="flex flex-col items-center gap-6 border-t border-white/10 py-8 md:flex-row md:justify-between">
+        <motion.div
+          className="flex flex-col items-center gap-6 border-t border-white/10 py-8 md:flex-row md:justify-between"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.1, ease: easeOut }}
+        >
           <a href="#" className="shrink-0" aria-label="Stephanie Hoyle — inicio">
             <img
               src="/logo-secundario.png"
@@ -63,8 +77,8 @@ export default function FooterSection() {
               </li>
             </ul>
           </nav>
-        </div>
+        </motion.div>
       </Container>
-    </footer>
+    </motion.footer>
   );
 }

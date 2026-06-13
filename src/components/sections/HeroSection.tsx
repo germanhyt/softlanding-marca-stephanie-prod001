@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
 import ButtonCTA from "@/components/common/ButtonCTA";
 import Container from "@/components/common/Container";
+import MobileNavDrawer from "@/components/common/MobileNavDrawer";
 import HeroHighlightsStrip from "@/components/sections/HeroHighlightsStrip";
-import { navLinks } from "@/data/siteContent";
+import { easeOut, staggerItem, staggerList } from "@/utils/motion";
 import { smoothScrollTo } from "@/utils/helpers";
 
 const scrollTarget = "servicios";
@@ -13,8 +15,15 @@ export default function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-background-base pb-10 pt-6 md:pb-16 md:pt-8">
+      <MobileNavDrawer isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+
       <Container>
-        <header className="mb-10 flex items-center justify-between gap-4 md:mb-14">
+        <motion.header
+          className="mb-10 flex items-center justify-between gap-4 md:mb-14"
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: easeOut }}
+        >
           <a href="#" className="shrink-0" aria-label="Stephanie Hoyle — inicio">
             <img
               src="/logo.png"
@@ -27,7 +36,13 @@ export default function HeroSection() {
           </a>
 
           <div className="flex items-center gap-3 md:gap-4">
-            <ButtonCTA href="#contacto" label="Hablemos" variant="dark" icon="none" className="px-5 py-2.5 text-xs md:text-sm" />
+            <ButtonCTA
+              href="#contacto"
+              label="Hablemos"
+              variant="dark"
+              icon="none"
+              className="px-5 py-2.5 text-xs md:text-sm"
+            />
             <button
               type="button"
               className="rounded-md p-2 text-text-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark"
@@ -38,42 +53,29 @@ export default function HeroSection() {
               {isMenuOpen ? <FiX size={26} /> : <FiMenu size={26} />}
             </button>
           </div>
-        </header>
-
-        {isMenuOpen ? (
-          <nav
-            aria-label="Navegación principal"
-            className="mb-8 rounded-2xl border border-primary-dark/10 bg-background-soft p-4 md:mb-10"
-          >
-            <ul className="space-y-1">
-              {navLinks.map((item) => (
-                <li key={item.label}>
-                  <a
-                    href={item.href}
-                    target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noopener noreferrer" : undefined}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="block rounded-lg px-3 py-2.5 text-sm font-medium text-text-main hover:bg-background-contrast"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        ) : null}
+        </motion.header>
 
         <div className="grid items-center gap-8 md:grid-cols-2 md:gap-10 lg:gap-14">
-          <div>
-            <h1 className="text-4xl leading-[1.1] text-text-dark sm:text-5xl md:text-[3.25rem] lg:text-[3.5rem]">
+          <motion.div
+            variants={staggerList}
+            initial="hidden"
+            animate="show"
+          >
+            <motion.h1
+              variants={staggerItem}
+              className="text-4xl leading-[1.1] text-text-dark sm:text-5xl md:text-[3.25rem] lg:text-[3.5rem]"
+            >
               <span className="block font-sans font-bold">Estrategias que impulsan</span>
               <span className="mt-1 block font-serif text-[1.05em] italic font-medium">negocios reales</span>
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-text-main md:text-lg">
+            </motion.h1>
+            <motion.p
+              variants={staggerItem}
+              className="mt-6 max-w-xl text-base leading-relaxed text-text-main md:text-lg"
+            >
               Ayudo a startups y negocios a crecer con estrategias de marketing basadas en datos, investigación y
               creatividad.
-            </p>
-            <div className="mt-8">
+            </motion.p>
+            <motion.div variants={staggerItem} className="mt-8">
               <ButtonCTA
                 href={`#${scrollTarget}`}
                 label="Elegí tu estrategia"
@@ -84,20 +86,31 @@ export default function HeroSection() {
                   smoothScrollTo(scrollTarget);
                 }}
               />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="relative md:pl-4">
+          <motion.div
+            className="relative md:pl-4"
+            initial={{ opacity: 0, x: 32 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.65, delay: 0.15, ease: easeOut }}
+          >
             <img
               src="/images/hero-banner.webp"
               alt="Ilustración de estrategia: tablero de ajedrez con camino hacia la meta."
               className="h-full w-full object-contain"
               loading="eager"
             />
-          </div>
+          </motion.div>
         </div>
 
-        <HeroHighlightsStrip />
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.35, ease: easeOut }}
+        >
+          <HeroHighlightsStrip />
+        </motion.div>
       </Container>
     </section>
   );
