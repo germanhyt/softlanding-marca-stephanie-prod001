@@ -31,30 +31,48 @@ export const navLinks = [
   { label: "Newsletter", href: siteConfig.externalLinks.newsletter, external: true }
 ];
 
+export const consultoriaIdealPara = [
+  "Tienen muchas iniciativas pero poco foco estratégico",
+  "Necesitan claridad sobre qué priorizar y por qué",
+  "Buscan mejorar adquisición, retención o engagement",
+  "Quieren una estrategia accionable, no una presentación"
+];
+
+export const consultoriaTrabajamosEn = [
+  { label: "Diagnóstico", description: "Auditoría profunda del estado actual" },
+  { label: "Prioridades", description: "Definición de qué mueve la aguja" },
+  { label: "Growth Strategy", description: "Hoja de ruta clara y ejecutable" },
+  { label: "Tactical planning", description: "Frameworks de ejecución por área" }
+];
+
 export const services = [
   {
-    title: "Growth",
+    number: "01",
+    tag: "Estrategia",
+    title: "Growth Strategy",
     description:
-      "Estrategias de adquisición, activación y retención para convertir objetivos en crecimiento medible.",
-    result: "Roadmap accionable con prioridades claras.",
-    image: "/images/service-growth.webp",
-    alt: "Ilustración del servicio Growth."
+      "Diseño de estrategia de crecimiento integral: auditoría, diagnóstico, definición de objetivos y construcción de un roadmap accionable alineado a tus metas de negocio."
   },
   {
-    title: "Brand",
+    number: "02",
+    tag: "Liderazgo",
+    title: "Fractional Head of Growth",
     description:
-      "Definición de posicionamiento y mensajes para alinear marca, propuesta de valor y audiencia.",
-    result: "Narrativa coherente para comunicar y diferenciar.",
-    image: "/images/service-brand.webp",
-    alt: "Ilustración del servicio Brand."
+      "Actúo como tu Growth Lead fraccionado. Lidero la función de crecimiento de manera continua, embebida en tu equipo, sin el costo de una contratación full-time."
   },
   {
-    title: "On-demand",
+    number: "03",
+    tag: "Comunicación",
+    title: "Engagement & Storytelling",
     description:
-      "Acompañamiento estratégico flexible para destrabar decisiones clave durante la ejecución.",
-    result: "Soporte experto en momentos de mayor impacto.",
-    image: "/images/service-ondemand.webp",
-    alt: "Ilustración del servicio On-demand."
+      "Mejora de posicionamiento, messaging y narrativa de marca. Traducimos estrategia en historias que resuenan con tu audiencia y convierten mejor."
+  },
+  {
+    number: "04",
+    tag: "On-demand",
+    title: "Strategic Advisory",
+    description:
+      "Sesiones de trabajo enfocadas para desbloquear decisiones específicas. Diagnóstico express, revisión de estrategia o respuesta a un desafío concreto."
   }
 ];
 
@@ -62,25 +80,27 @@ export const processSteps = [
   {
     title: "Entender",
     description:
-      "Inmersión profunda en tu negocio, mercado, equipo y objetivos. Sin asumir, sin saltarse pasos.",
-    icon: "/images/process-entender.webp"
+      "Inmersión profunda en tu negocio, mercado, equipo y objetivos. Sin asumir, sin saltarse pasos."
   },
   {
     title: "Diseñar",
     description:
-      "Construcción de la estrategia y el roadmap con prioridades claras y criterios de decisión explícitos.",
-    icon: "/images/process-disenar.webp"
+      "Construcción de la estrategia y el roadmap con prioridades claras y criterios de decisión explícitos."
   },
   {
     title: "Acompañar",
     description:
-      "Presencia activa durante la ejecución. No entrego un deck y me voy, me quedo mientras haga falta.",
-    icon: "/images/process-acompanar.webp"
+      "Presencia activa durante la ejecución. No entrego un deck y me voy — me quedo mientras haga falta."
   },
   {
     title: "Medir",
     description:
-      "Definición de métricas de éxito, seguimiento de resultados y ajuste continuo de la estrategia.",
-    icon: "/images/process-medir.webp"
+      "Definición de métricas de éxito, seguimiento de resultados y ajuste continuo de la estrategia."
   }
+];
+
+export const sobreMiParagraphs = [
+  "Con más de 10 años trabajando en la intersección de marketing, datos y estrategia, he acompañado a startups en sus primeras etapas, a scaleups en momentos críticos de crecimiento y a organizaciones de impacto en la construcción de sistemas sostenibles.",
+  "Mi trabajo no empieza con tácticas. Empieza entendiendo el negocio, el equipo y los objetivos reales — y desde ahí, construimos juntos la estrategia que tiene más posibilidades de funcionar.",
+  "Me interesa el crecimiento que dura: el que está alineado con la identidad de la organización, soportado por datos y ejecutado con criterio."
 ];

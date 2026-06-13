@@ -1,38 +1,54 @@
+import ButtonCTA from "@/components/common/ButtonCTA";
 import Container from "@/components/common/Container";
+import SectionHeading from "@/components/common/SectionHeading";
 import { siteConfig } from "@/config/site.config";
 
 export default function FooterSection() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-primary-dark/10 bg-background-base py-10">
+    <footer className="bg-[#1A1A1A] text-white">
       <Container>
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="text-lg font-semibold text-text-dark">Stephanie Hoyle</p>
-            <p className="text-sm text-text-muted">Growth strategy</p>
-          </div>
+        <div className="py-16 text-center md:py-24">
+          <SectionHeading
+            eyebrow={undefined}
+            titleSans="¿Tu equipo necesita más "
+            titleSerif="claridad y dirección"
+            titleSansAfter="?"
+            subtitle="Conversemos sobre tus objetivos y veamos cómo puedo ayudarte a construir una estrategia de crecimiento que realmente funcione."
+            centered
+            inverted
+            className="mb-8"
+          />
+          <ButtonCTA href="#contacto" label="Agenda una reunión" variant="white" icon="none" />
+        </div>
+
+        <div className="flex flex-col items-center gap-6 border-t border-white/10 py-8 md:flex-row md:justify-between">
+          <a href="#" className="shrink-0" aria-label="Stephanie Hoyle — inicio">
+            <img
+              src="/logo-secundario.png"
+              alt="Stephanie — Growth strategy"
+              width={160}
+              height={40}
+              className="h-10 w-auto"
+              loading="lazy"
+            />
+          </a>
+
+          <p className="text-center text-xs text-white/60 md:text-sm">
+            © {year} · Growth Strategy & Marketing Consulting
+          </p>
 
           <nav aria-label="Enlaces del pie de página">
-            <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium text-text-main">
+            <ul className="flex items-center gap-6 text-sm font-medium text-white/80">
               <li>
-                <a href="#consultoria" className="hover:text-primary-dark">
-                  Consultoría
-                </a>
-              </li>
-              <li>
-                <a href="#servicios" className="hover:text-primary-dark">
-                  Servicios
-                </a>
-              </li>
-              <li>
-                <a href="#proceso" className="hover:text-primary-dark">
-                  Proceso
-                </a>
-              </li>
-              <li>
-                <a href="#sobre-mi" className="hover:text-primary-dark">
-                  Sobre mí
+                <a
+                  href={siteConfig.externalLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white"
+                >
+                  Linkedin
                 </a>
               </li>
               <li>
@@ -40,26 +56,14 @@ export default function FooterSection() {
                   href={siteConfig.externalLinks.newsletter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-primary-dark"
+                  className="hover:text-white"
                 >
                   Newsletter
-                </a>
-              </li>
-              <li>
-                <a
-                  href={siteConfig.externalLinks.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary-dark"
-                >
-                  LinkedIn
                 </a>
               </li>
             </ul>
           </nav>
         </div>
-
-        <p className="mt-8 text-sm text-text-muted">© {year} Stephanie Hoyle. Todos los derechos reservados.</p>
       </Container>
     </footer>
   );

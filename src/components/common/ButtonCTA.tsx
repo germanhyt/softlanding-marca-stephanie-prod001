@@ -6,7 +6,7 @@ type ButtonCTAProps = {
   label: string;
   className?: string;
   external?: boolean;
-  variant?: "light" | "dark";
+  variant?: "light" | "dark" | "white";
   icon?: "arrow-right" | "arrow-down" | "none";
   onClick?: MouseEventHandler<HTMLAnchorElement>;
 };
@@ -14,7 +14,8 @@ type ButtonCTAProps = {
 const variantClasses = {
   light:
     "bg-primary-light text-primary-dark shadow-card hover:-translate-y-0.5 hover:bg-[#d7f96a]",
-  dark: "bg-primary-dark text-white hover:bg-[#2a4f38]"
+  dark: "bg-primary-dark text-white hover:bg-[#2a4f38]",
+  white: "bg-white text-primary-dark hover:bg-white/90"
 };
 
 export default function ButtonCTA({
