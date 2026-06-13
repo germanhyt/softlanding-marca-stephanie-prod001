@@ -1,5 +1,28 @@
 import { siteConfig } from "@/config/site.config";
 
+export const heroHighlights = [
+  {
+    label: "Estrategia basada en datos",
+    icon: "/images/hero-icon-datos.webp",
+    alt: "Ícono de gráfico circular."
+  },
+  {
+    label: "Experiencia en startups",
+    icon: "/images/hero-icon-cohete.webp",
+    alt: "Ícono de cohete."
+  },
+  {
+    label: "Mentalidad de crecimiento",
+    icon: "/images/hero-icon-montana.webp",
+    alt: "Ícono de montaña con bandera."
+  },
+  {
+    label: "Enfoque humano y creativo",
+    icon: "/images/hero-icon-personas.webp",
+    alt: "Ícono de grupo de personas."
+  }
+];
+
 export const navLinks = [
   { label: "Consultoría", href: "#consultoria" },
   { label: "Servicios", href: "#servicios" },
