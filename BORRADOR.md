@@ -1,0 +1,640 @@
+
+Sobre el proyecto:
+
+1) El proyecto es una landing para "Stephanie Hoyle" para que impulse su marca perosnal de forma independiente
+
+2) La Arquitectura de informacióm se basa en los siguientes puntos
+- en info/img/ enccontramos las imàgenes que se asignarán a cada sección de la landing
+- El frame general lo revisamos de mcp con figma que te indicaré
+- En caso de haber problemas con el punto anterior vamos a leer las imagenes de info/prototype/
+
+3) Enlaces:
+- Este es el enlace a su newsletter: https://sustainablecareergrowth.substack.com/
+- Este es a su perfil de Linkedin: https://www.linkedin.com/in/stephaniehoyleca/
+- Web de referencia: https://1f4590ac-5c75-4e5f-9d54-3a793d7af7d0-render.magicpatterns.app/
+
+
+Detalles técnicos:
+
+1) Para maquetado y estilos:
+- React island y typescript: con web componentes, hooks y buenas prácticas para un rendimiento óptimo de los renders.
+- Tailwindcss 4 con tailwind.config.ts: estilos con orden jerárquico y buenas prácticas, en casos especiales usar css puro.
+- React Icons: Para iconos
+- Framer-motion: Para efectos y animaciones, en casos especiales usar css puro.
+- Swiper: Para carousel de cards, reseñas, contenidos.
+
+2) Para SEO:
+- crear config/seoConfig.ts y config/site.config.ts: Preparado para personalizar datos del cliente
+- además preparar el file de robots y sitemap
+
+3) Helpers
+- utils/helpers.ts: En caso de que se necesiten funciones comunes
+
+4) Para el gestor de depndencias:
+- pnpm
+
+5) Consideramos tailwind.config.ts y responsive:
+- "import type { Config } from 'tailwindcss';
+export default {
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  theme: {
+    extend: {
+      screens: {
+        xs: "375px",
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1536px",
+        "3xl": "1920px",
+        "4xl": "2560px",
+      },
+      container: {
+        padding: {
+          DEFAULT: "1rem",
+          sm: "1.2rem",
+          md: "1.5rem",
+          lg: "2rem",
+          xl: "3rem",
+          "2xl": "6rem",
+        },
+      },
+      fontFamily: {
+      },
+      colors: {
+        primary: {
+        },
+        text: {
+        },
+        background: {
+
+        },
+      },
+      backgroundImage: {
+        'gradient-primary': 'linear-gradient()',
+      },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
+} satisfies Config;
+"
+
+6) Basado en el package.json:
+- "  "dependencies": {
+    "@astrojs/react": "^4.4.0",
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.15.3",
+    "framer-motion": "^12.23.24",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sweetalert2": "^11.26.3",
+    "swiper": "^12.0.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/node": "^24.9.1",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "react-icons": "^5.5.0",
+    "tailwindcss": "^3.4.18",
+    "typescript": "^5.9.3",
+  }" 
+
+
+7) En caso sea landing basado en el astro.config.mjs cuyo ejemplo es (readaptamos):
+- "// @ts-check
+import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
+import tailwind from "@astrojs/tailwind";
+import sitemap from "@astrojs/sitemap";
+
+// https://astro.build/config
+export default defineConfig({
+  site: "https://www.biotraining.pe",
+  integrations: [
+    react(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    sitemap({
+      changefreq: "weekly",
+      priority: 0.7,
+      lastmod: new Date("2025-11-12"),
+    }),
+  ],
+  output: "static",
+});
+"
+
+---
+
+## Planificación paso a paso
+
+### Paso 1 (cerrado): objetivo, alcance y criterios
+
+Objetivo del proyecto:
+- Construir una landing personal para Stephanie Hoyle que comunique su propuesta de valor en growth strategy y convierta visitas en conversaciones de negocio.
+
+Alcance MVP:
+- Landing de una sola página responsive (desktop y mobile) basada en Figma.
+- Secciones: Header/Hero, Consultoría, Servicios, Proceso, Sobre mí, Footer.
+- CTA principal: "Elegí tu estrategia".
+- Enlaces activos a newsletter y LinkedIn.
+
+Criterios de éxito:
+- Alta fidelidad visual respecto a Figma.
+- Carga rápida y animaciones fluidas.
+- SEO técnico base completo.
+- Accesibilidad mínima garantizada (estructura semántica, contraste y textos alternativos).
+
+### Paso 2 (actual): arquitectura de información final
+
+Orden de la landing:
+1. Header + Hero.
+2. Consultoría.
+3. Servicios.
+4. Proceso.
+5. Sobre mí.
+6. Footer.
+
+Mapa de contenido por sección:
+
+1) Header + Hero
+- Contenido clave:
+  - Marca personal: "Stephanie Hoyle" + subtítulo "Growth strategy".
+  - Navegación principal.
+  - Titular: "Estrategias que impulsan negocios reales".
+  - Copia de apoyo sobre crecimiento basado en datos, investigación y creatividad.
+  - CTA principal: "Elegí tu estrategia".
+- Assets sugeridos:
+  - `info/prototype/header.png`
+  - Íconos del menú y flecha CTA (si aplica en mobile).
+
+2) Consultoría
+- Contenido clave:
+  - Bloque explicativo del enfoque de acompañamiento.
+  - Beneficios/valor de trabajar con Stephanie.
+- Assets sugeridos:
+  - `info/prototype/section-consultoria.png`
+
+3) Servicios
+- Contenido clave:
+  - Tarjetas de servicios (ejemplo en Figma: Growth, Brand, On-demand).
+  - Breve descriptor por servicio.
+  - Comportamiento de carrusel en mobile (si la densidad de cards lo requiere).
+- Assets sugeridos:
+  - `info/prototype/section3-servicios.png`
+  - `info/img/Ilustraciones segunda sección - Web Stephanie/`
+
+4) Proceso
+- Contenido clave:
+  - Título de sección: "Proceso" y subtítulo "Cómo trabajo".
+  - Mensaje: "Un proceso circular, no lineal."
+  - 4 pasos:
+    1) Entender.
+    2) Diseñar.
+    3) Acompañar.
+    4) Medir.
+  - Cada paso con una breve explicación.
+- Assets sugeridos:
+  - `info/prototype/section4-proceso.png`
+  - `info/img/íconos primera sección web Stephanie/`
+
+5) Sobre mí
+- Contenido clave:
+  - Bloque biográfico de Stephanie.
+  - Foto y narrativa de experiencia.
+  - Cierre con CTA de contacto/conversación.
+- Assets sugeridos:
+  - `info/prototype/section5-sobremi.png`
+  - `info/img/Foto Stephanie - Sección Sobre mí/`
+
+6) Footer
+- Contenido clave:
+  - Enlaces de cierre.
+  - Newsletter:
+    - https://sustainablecareergrowth.substack.com/
+  - LinkedIn:
+    - https://www.linkedin.com/in/stephaniehoyleca/
+- Assets sugeridos:
+  - `info/prototype/footer.png`
+
+Notas de consistencia:
+- Desktop referencia base: frame `217:1311`.
+- Mobile referencia base: frame `217:1473`.
+- Si falla la lectura de Figma, usar capturas en `info/prototype/` como respaldo oficial.
+
+### Paso 3 (actual): arquitectura técnica ejecutable
+
+Stack base:
+- Astro + React islands + TypeScript.
+- Tailwind CSS (alineado al `package.json` actual).
+- Framer Motion para animaciones puntuales.
+- Swiper para carruseles en mobile (si aplica por densidad de contenido).
+- React Icons para iconografía auxiliar.
+
+Estructura objetivo de carpetas:
+- `src/pages/index.astro`
+- `src/layouts/MainLayout.astro`
+- `src/components/sections/HeroSection.tsx`
+- `src/components/sections/ConsultoriaSection.tsx`
+- `src/components/sections/ServiciosSection.tsx`
+- `src/components/sections/ProcesoSection.tsx`
+- `src/components/sections/SobreMiSection.tsx`
+- `src/components/sections/FooterSection.tsx`
+- `src/components/common/ButtonCTA.tsx`
+- `src/components/common/Container.tsx`
+- `src/components/common/SectionHeading.tsx`
+- `src/config/site.config.ts`
+- `src/config/seoConfig.ts`
+- `src/utils/helpers.ts`
+- `public/images/*` (assets optimizados desde `info/img/` o `info/prototype/`)
+- `public/robots.txt`
+- `public/sitemap-index.xml` (si no se genera automáticamente)
+
+Responsabilidad por capa:
+- `index.astro`: orquestación de secciones y orden final de la landing.
+- `MainLayout.astro`: estructura base HTML, metadatos SEO y carga de fuentes.
+- `sections/*.tsx`: UI y comportamiento por bloque de negocio.
+- `common/*.tsx`: piezas reutilizables sin lógica de negocio específica.
+- `config/*.ts`: configuración editable por cliente (SEO y datos globales).
+- `utils/helpers.ts`: funciones utilitarias puras y reutilizables.
+
+Plan de implementación por fases:
+1. Bootstrap técnico:
+   - Crear estructura de carpetas base.
+   - Configurar `astro.config.mjs` y Tailwind.
+   - Definir tokens iniciales (tipografía, colores, contenedor, breakpoints).
+2. Maquetado estructural:
+   - Construir `MainLayout.astro` + `index.astro`.
+   - Implementar secciones sin animaciones (primero estático fiel a Figma).
+3. Interacción y motion:
+   - Integrar animaciones mínimas con Framer Motion.
+   - Agregar carrusel con Swiper solo donde sea realmente necesario.
+4. SEO + accesibilidad:
+   - Completar `seoConfig.ts`, `site.config.ts`, `robots.txt` y sitemap.
+   - Revisar headings semánticos, contraste, `alt`, `aria-label` y foco de teclado.
+5. Optimización final:
+   - Comprimir assets y revisar tamaños.
+   - Ajustes de performance (evitar JS innecesario en islas).
+   - QA visual final desktop/mobile.
+
+Convenciones técnicas:
+- Nombres de componentes en PascalCase y archivos por sección explícitos.
+- Props tipadas con interfaces locales por componente.
+- Evitar lógica compleja en vistas; mover utilidades a `utils/helpers.ts`.
+- Mantener estilos utilitarios en Tailwind; usar CSS adicional solo en casos especiales.
+- Evitar sobreanimación: prioridad a claridad, rendimiento y legibilidad.
+
+Checklist de Definition of Done (DoD):
+- Landing fiel a Figma en desktop y mobile.
+- Navegación y CTA principal funcionando.
+- Enlaces externos (Substack y LinkedIn) correctos.
+- SEO base aplicado y validado.
+- Accesibilidad mínima validada.
+- Sin errores de build.
+
+Decisión tomada:
+- Se implementa el MVP con `tailwindcss@^3.4.18` para mantener compatibilidad con el stack de referencia.
+- La migración a Tailwind v4 queda fuera del alcance inicial y se evaluará en una iteración posterior.
+
+### Paso 4 (actual): mapa de contenidos definitivo (copys y enlaces)
+
+Objetivo del paso:
+- Cerrar contenido textual de cada sección para evitar retrabajo durante el maquetado.
+
+1) Header + Hero
+- Navegación:
+  - Consultoría
+  - Servicios
+  - Proceso
+  - Sobre mí
+  - Newsletter
+- Identidad:
+  - "Stephanie Hoyle"
+  - "Growth strategy"
+- Titular principal (H1):
+  - "Estrategias que impulsan negocios reales"
+- Texto de apoyo:
+  - "Ayudo a startups y negocios a crecer con estrategias de marketing basadas en datos, investigación y creatividad."
+- CTA principal:
+  - Label: "Elegí tu estrategia"
+  - Acción: scroll a sección de servicios.
+- CTA de conversación:
+  - "Conversemos sobre tus objetivos y veamos cómo puedo ayudarte a construir una estrategia de crecimiento que realmente funcione."
+
+2) Consultoría
+- Título de sección:
+  - "Consultoría"
+- Propuesta de valor:
+  - Acompañamiento estratégico para traducir objetivos de negocio en planes accionables y medibles.
+- Mensaje clave:
+  - Crecimiento alineado con contexto real del negocio, no tácticas aisladas.
+
+3) Servicios
+- Título de sección:
+  - "Servicios"
+- Cards base (MVP):
+  - Growth.
+  - Brand.
+  - On-demand.
+- Formato de cada card:
+  - Nombre del servicio.
+  - Descripción corta (1-2 líneas).
+  - Resultado esperado.
+- CTA de sección:
+  - "Elegí tu estrategia" (reutilizable para mantener consistencia).
+
+4) Proceso
+- Título:
+  - "Proceso"
+- Subtítulo:
+  - "Cómo trabajo."
+- Frase de contexto:
+  - "Un proceso circular, no lineal."
+- Pasos:
+  1) Entender:
+     - "Inmersión profunda en tu negocio, mercado, equipo y objetivos. Sin asumir, sin saltarse pasos."
+  2) Diseñar:
+     - "Construcción de la estrategia y el roadmap con prioridades claras y criterios de decisión explícitos."
+  3) Acompañar:
+     - "Presencia activa durante la ejecución. No entrego un deck y me voy, me quedo mientras haga falta."
+  4) Medir:
+     - "Definición de métricas de éxito, seguimiento de resultados y ajuste continuo de la estrategia."
+
+5) Sobre mí
+- Nombre:
+  - "Stephanie Hoyle"
+- Rol:
+  - "Growth strategy"
+- Cuerpo principal:
+  - "Con más de 10 años trabajando en la intersección de marketing, datos y estrategia, he acompañado a startups en sus primeras etapas, a scaleups en momentos críticos de crecimiento y a organizaciones de impacto en la construcción de sistemas sostenibles."
+  - "Mi trabajo no empieza con tácticas. Empieza entendiendo el negocio, el equipo y los objetivos reales y, desde ahí, construimos juntos la estrategia que tiene más posibilidades de funcionar."
+  - "Me interesa el crecimiento que dura: el que está alineado con la identidad de la organización, soportado por datos y ejecutado con criterio."
+- Cierre:
+  - Repetir CTA de conversación para mantener claridad de conversión.
+
+6) Footer
+- Navegación resumida:
+  - Consultoría / Servicios / Proceso / Sobre mí.
+- Enlaces externos:
+  - Newsletter: https://sustainablecareergrowth.substack.com/
+  - LinkedIn: https://www.linkedin.com/in/stephaniehoyleca/
+- Copyright:
+  - "© Stephanie Hoyle. Todos los derechos reservados."
+
+Alt text propuestos (accesibilidad):
+- Foto principal Stephanie:
+  - "Retrato de Stephanie Hoyle".
+- Ilustraciones de servicios:
+  - "Ilustración representando el servicio de [nombre del servicio]".
+- Íconos de proceso:
+  - "Icono del paso [Entender/Diseñar/Acompañar/Medir]".
+- Flecha CTA:
+  - "Flecha decorativa del botón Elegí tu estrategia" (si aporta significado visual; si es puramente decorativa, usar `aria-hidden`).
+
+Definiciones de enlace y comportamiento:
+- Los enlaces externos abren en nueva pestaña con `rel="noopener noreferrer"`.
+- El CTA principal realiza scroll interno suave.
+- Mantener consistencia de labels de CTA en todas las secciones.
+
+### Paso 5 (actual): backlog de implementación priorizado
+
+Objetivo del paso:
+- Convertir la planificación en tareas ejecutables con orden, prioridad y criterio de cierre.
+
+#### Sprint 1: base técnica y estructura visual (prioridad alta)
+
+Tarea 1. Inicialización del proyecto Astro + React + TS + Tailwind.
+- Prioridad: Alta.
+- Dependencias: Ninguna.
+- Entregable:
+  - Proyecto inicial funcional con scripts de desarrollo y build.
+  - Integraciones configuradas (`@astrojs/react`, `@astrojs/tailwind`, `@astrojs/sitemap`).
+- Criterio de aceptación:
+  - `pnpm dev` y `pnpm build` ejecutan sin error.
+
+Tarea 2. Estructura de carpetas y arquitectura base.
+- Prioridad: Alta.
+- Dependencias: Tarea 1.
+- Entregable:
+  - Crear rutas y archivos definidos en el Paso 3 (`pages`, `layouts`, `sections`, `common`, `config`, `utils`).
+- Criterio de aceptación:
+  - Estructura creada y documentada en el repositorio sin archivos huérfanos.
+
+Tarea 3. Configuración global de estilos y tokens.
+- Prioridad: Alta.
+- Dependencias: Tarea 1.
+- Entregable:
+  - `tailwind.config` con breakpoints, contenedor, tipografías y colores base.
+  - Variables de diseño alineadas a Figma.
+- Criterio de aceptación:
+  - Se pueden aplicar clases de tipografía/color/spacing consistentes en todas las secciones.
+
+Tarea 4. Construcción de `MainLayout` e `index`.
+- Prioridad: Alta.
+- Dependencias: Tareas 2 y 3.
+- Entregable:
+  - Layout principal semántico + página orquestadora con orden final de secciones.
+- Criterio de aceptación:
+  - Landing renderiza completa con todas las secciones en el orden definido.
+
+Tarea 5. Maquetado estático de secciones (sin animaciones).
+- Prioridad: Alta.
+- Dependencias: Tarea 4.
+- Entregable:
+  - `Hero`, `Consultoria`, `Servicios`, `Proceso`, `SobreMi`, `Footer`.
+  - Contenido final del Paso 4 integrado.
+- Criterio de aceptación:
+  - Vista desktop y mobile con fidelidad visual aceptable respecto a Figma/prototipos.
+
+#### Sprint 2: interacción, SEO y accesibilidad (prioridad alta/media)
+
+Tarea 6. Componentes comunes reutilizables.
+- Prioridad: Media.
+- Dependencias: Tarea 5.
+- Entregable:
+  - `ButtonCTA`, `Container`, `SectionHeading` aplicados en todas las secciones.
+- Criterio de aceptación:
+  - No hay duplicación innecesaria de estructura de botones/títulos/contenedores.
+
+Tarea 7. Integración de assets optimizados.
+- Prioridad: Alta.
+- Dependencias: Tarea 5.
+- Entregable:
+  - Assets exportados y ubicados en `public/images`.
+  - Peso optimizado de imágenes críticas.
+- Criterio de aceptación:
+  - No hay imágenes rotas y la carga visual inicial es rápida.
+
+Tarea 8. Interacciones y animaciones mínimas.
+- Prioridad: Media.
+- Dependencias: Tareas 5 y 6.
+- Entregable:
+  - Transiciones sutiles con Framer Motion.
+  - Scroll suave y microinteracciones de CTA.
+- Criterio de aceptación:
+  - Animaciones fluidas, sin bloquear render ni afectar legibilidad.
+
+Tarea 9. Carrusel en servicios (condicional).
+- Prioridad: Media.
+- Dependencias: Tarea 5.
+- Entregable:
+  - Implementación con Swiper solo en mobile si la sección lo requiere.
+- Criterio de aceptación:
+  - Navegación táctil cómoda y contenido legible en cards.
+
+Tarea 10. SEO técnico base.
+- Prioridad: Alta.
+- Dependencias: Tarea 4.
+- Entregable:
+  - `src/config/seoConfig.ts`, `src/config/site.config.ts`, `robots.txt`, sitemap.
+  - Title, description, canonical y Open Graph iniciales.
+- Criterio de aceptación:
+  - Metadatos presentes y coherentes en la página principal.
+
+Tarea 11. Accesibilidad mínima obligatoria.
+- Prioridad: Alta.
+- Dependencias: Tarea 5.
+- Entregable:
+  - Jerarquía correcta de headings.
+  - `alt` text aplicado.
+  - Estado de foco visible y labels en elementos interactivos.
+- Criterio de aceptación:
+  - Navegación por teclado funcional y contenido comprensible con lector de pantalla básico.
+
+#### Sprint 3: calidad, ajustes y entrega (prioridad media)
+
+Tarea 12. QA visual y responsive final.
+- Prioridad: Alta.
+- Dependencias: Tareas 5, 7, 8, 9, 11.
+- Entregable:
+  - Ajustes de spacing, tipografía y comportamiento responsive por breakpoint.
+- Criterio de aceptación:
+  - No hay cortes, solapamientos ni desbordes en desktop/mobile.
+
+Tarea 13. Revisión de performance.
+- Prioridad: Media.
+- Dependencias: Tareas 7 y 8.
+- Entregable:
+  - Reducción de JS innecesario en islas.
+  - Optimización de imágenes y carga diferida donde aplique.
+- Criterio de aceptación:
+  - Experiencia fluida en dispositivos de gama media.
+
+Tarea 14. Preparación de release.
+- Prioridad: Media.
+- Dependencias: Todas las anteriores.
+- Entregable:
+  - Validación final de enlaces externos.
+  - Checklist DoD completo.
+- Criterio de aceptación:
+  - Landing lista para despliegue sin bloqueantes.
+
+Riesgos y mitigación:
+- Riesgo: diferencias entre Figma y assets en `info/prototype`.
+  - Mitigación: usar Figma como fuente primaria y `prototype` como fallback visual.
+- Riesgo: sobreuso de animaciones.
+  - Mitigación: limitar motion a elementos de alto valor comunicacional.
+- Riesgo: inconsistencia tipográfica entre desktop y mobile.
+  - Mitigación: definir escala tipográfica centralizada desde Tailwind al inicio.
+
+Orden sugerido de ejecución real:
+1) Tareas 1-5.
+2) Tareas 10-11.
+3) Tareas 6-9.
+4) Tareas 12-14.
+
+### Paso 6 (actual): plan de QA y validación final
+
+Objetivo del paso:
+- Estandarizar cómo se valida calidad antes de declarar la landing lista para release.
+
+Entornos de validación:
+- Local: QA funcional y visual durante desarrollo.
+- Build local (`pnpm build` + preview): validación de release.
+- Entorno de preproducción (si aplica): validación final con enlaces y metadatos reales.
+
+Matriz mínima de dispositivos/navegadores:
+- Mobile: 375px y 420px.
+- Tablet: 768px.
+- Desktop: 1280px y 1440px.
+- Navegadores: Chrome (principal), Edge (secundario), Safari/iOS (si está disponible en pruebas).
+
+Checklist QA funcional:
+- Navegación del header:
+  - Cada item hace scroll correcto a su sección.
+- CTA principal:
+  - "Elegí tu estrategia" desplaza al bloque objetivo sin errores.
+- Enlaces externos:
+  - Newsletter y LinkedIn abren en nueva pestaña.
+  - Usan `rel="noopener noreferrer"`.
+- Sección servicios:
+  - Cards renderizan correctamente.
+  - Si hay carrusel en mobile, navegación táctil funciona sin cortes.
+
+Checklist QA visual:
+- Fidelidad de estructura:
+  - Orden de secciones coincide con Figma.
+- Tipografía:
+  - Jerarquía H1/H2/H3 consistente y legible.
+- Espaciado:
+  - Sin bloques solapados ni saltos bruscos entre breakpoints.
+- Colores:
+  - Aplicación consistente de paleta principal y de texto.
+- Imágenes:
+  - Sin pixelación crítica, deformación o recortes no deseados.
+
+Checklist QA de accesibilidad:
+- Semántica:
+  - Un único H1 y jerarquía de headings lógica.
+- Alternativas textuales:
+  - `alt` text en imágenes informativas.
+  - Elementos decorativos con `aria-hidden` cuando corresponda.
+- Teclado:
+  - Foco visible en botones y enlaces.
+  - Navegación con tabulación sin bloqueos.
+- Legibilidad:
+  - Contraste suficiente entre texto y fondo.
+
+Checklist QA de SEO técnico:
+- Metadatos:
+  - `title`, `description`, canonical y Open Graph cargados.
+- Indexación:
+  - `robots.txt` accesible y correcto.
+  - Sitemap generado y accesible.
+- Contenido:
+  - Headings descriptivos.
+  - Enlaces internos y externos coherentes.
+
+Checklist QA de performance:
+- Build:
+  - `pnpm build` sin errores.
+- Payload:
+  - No cargar JS innecesario en secciones estáticas.
+- Imágenes:
+  - Formatos/pesos optimizados para web.
+- Percepción:
+  - Hero y contenido above-the-fold aparecen rápido en mobile.
+
+Criterios de severidad (para cierre de QA):
+- Bloqueante (P0): rompe navegación, build, render principal o enlaces críticos.
+- Alto (P1): afecta experiencia clave, pero existe workaround.
+- Medio (P2): detalle visual/funcional no crítico para release.
+- Bajo (P3): mejora estética o microajuste de baja prioridad.
+
+Regla de aprobación de release:
+- 0 issues P0.
+- 0 issues P1 abiertos sin aprobación explícita.
+- P2/P3 documentados con plan de corrección posterior.
+- Checklist DoD del Paso 3 completado.
+
+Entregables de cierre QA:
+- Lista de incidencias con severidad y estado.
+- Evidencia visual (capturas desktop/mobile por sección).
+- Confirmación final: "Aprobado para release".

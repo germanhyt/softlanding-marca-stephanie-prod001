@@ -1,0 +1,20 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import HeroSection from "@/components/sections/HeroSection";
+import ConsultoriaSection from "@/components/sections/ConsultoriaSection";
+import ServiciosSection from "@/components/sections/ServiciosSection";
+import ProcesoSection from "@/components/sections/ProcesoSection";
+import SobreMiSection from "@/components/sections/SobreMiSection";
+import FooterSection from "@/components/sections/FooterSection";
+---
+
+<MainLayout>
+  <HeroSection client:load />
+  <main>
+    <ConsultoriaSection />
+    <ServiciosSection client:visible />
+    <ProcesoSection client:visible />
+    <SobreMiSection />
+  </main>
+  <FooterSection />
+</MainLayout>

@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background-base font-sans text-text-main antialiased;
+}
+
+a {
+  @apply transition-colors duration-200;
+}
+
+.services-swiper .swiper-slide {
+  height: auto;
+}
+
+.services-swiper .swiper-pagination-bullet-active {
+  background: #1c3727;
+}
