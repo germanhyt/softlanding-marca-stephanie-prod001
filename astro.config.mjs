@@ -4,8 +4,12 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 
+const site = process.env.SITE_URL ?? "https://germanhyt.github.io";
+const base = process.env.BASE_PATH ?? "/softlanding-marca-stephanie-prod001";
+
 export default defineConfig({
-  site: "https://www.stephaniehoyle.com",
+  site,
+  base,
   integrations: [
     react(),
     tailwind({

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.stephaniehoyle.com/sitemap-index.xml
+Sitemap: https://germanhyt.github.io/softlanding-marca-stephanie-prod001/sitemap-index.xml

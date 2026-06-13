@@ -1,5 +1,5 @@
 export const siteConfig = {
-  siteUrl: "https://www.stephaniehoyle.com",
+  siteUrl: "https://germanhyt.github.io/softlanding-marca-stephanie-prod001",
   siteName: "Stephanie Hoyle",
   author: "Stephanie Hoyle",
   role: "Growth strategy",
