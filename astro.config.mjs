@@ -4,8 +4,12 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 
-const site = process.env.SITE_URL ?? "https://germanhyt.github.io";
-const base = process.env.BASE_PATH ?? "/softlanding-marca-stephanie-prod001";
+const site =
+  process.env.SITE_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://www.stephaniehoyle.com");
+
+// GitHub Pages usa subpath; Vercel sirve desde la raíz.
+const base = process.env.BASE_PATH ?? "/";
 
 export default defineConfig({
   site,

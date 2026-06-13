@@ -1,5 +1,9 @@
+const defaultSiteUrl =
+  import.meta.env.SITE ??
+  (import.meta.env.VERCEL_URL ? `https://${import.meta.env.VERCEL_URL}` : "https://www.stephaniehoyle.com");
+
 export const siteConfig = {
-  siteUrl: "https://germanhyt.github.io/softlanding-marca-stephanie-prod001",
+  siteUrl: defaultSiteUrl,
   siteName: "Stephanie Hoyle",
   author: "Stephanie Hoyle",
   role: "Growth strategy",
