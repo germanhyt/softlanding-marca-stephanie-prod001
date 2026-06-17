@@ -50,7 +50,7 @@ function ServiceCell({
 
 export default function ServiciosSection() {
   return (
-    <motion.section id="servicios" className="py-16 md:py-24" {...sectionReveal}>
+    <motion.section id="servicios" className="bg-primary-light py-16 md:py-24" {...sectionReveal}>
       <Container>
         <motion.div {...fadeInView}>
           <SectionHeading

@@ -5,7 +5,7 @@ import { easeOut, sectionReveal, staggerItem, staggerList } from "@/utils/motion
 
 export default function ProcesoSection() {
   return (
-    <motion.section id="proceso" className="bg-[#DFFF4F] py-16 md:py-24" {...sectionReveal}>
+    <motion.section id="proceso" className="py-16 md:py-24" {...sectionReveal}>
       <Container>
         <motion.header
           className="mb-12 md:mb-16"
@@ -64,7 +64,7 @@ export default function ProcesoSection() {
           transition={{ duration: 0.55, delay: 0.15, ease: easeOut }}
         >
           <hr className="border-t border-text-dark/20" />
-          <p className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 bg-[#DFFF4F] px-4 font-serif text-base italic text-text-dark md:text-lg">
+          <p className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 bg-background-base px-4 font-serif text-base italic text-text-dark md:text-lg">
             Un proceso circular, no lineal.
           </p>
         </motion.div>

@@ -24,7 +24,7 @@ export default function SobreMiSection() {
             <img
               src="/images/stephanie-portrait.webp"
               alt="Retrato ilustrado de Stephanie Hoyle"
-              className="h-auto w-full object-contain"
+              className="h-auto w-full object-contain"  
               loading="lazy"
             />
           </motion.div>
