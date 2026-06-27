@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import ButtonCTA from "@/components/common/ButtonCTA";
 import Container from "@/components/common/Container";
-import { siteConfig } from "@/config/site.config";
 import { sobreMiParagraphs } from "@/data/siteContent";
+import { buildWhatsAppUrl } from "@/utils/helpers";
 import { easeOut, sectionReveal, slideFromLeft, slideFromRight } from "@/utils/motion";
 
 export default function SobreMiSection() {
@@ -29,7 +29,7 @@ export default function SobreMiSection() {
             />
           </motion.div>
 
-          <motion.div id="contacto" className="md:pt-1" {...slideFromRight}>
+          <motion.div className="md:pt-1" {...slideFromRight}>
             <h2 className="text-3xl leading-[1.15] text-text-dark md:text-4xl lg:text-[2.75rem] lg:leading-[1.12]">
               <span className="font-sans font-bold">Estratega de crecimiento </span>
               <span className="font-serif italic font-medium">con raíces en el marketing y el dato.</span>
@@ -68,7 +68,7 @@ export default function SobreMiSection() {
               transition={{ duration: 0.45, delay: 0.28, ease: easeOut }}
             >
               <ButtonCTA
-                href={siteConfig.externalLinks.linkedin}
+                href={buildWhatsAppUrl()}
                 label="Hablemos"
                 variant="dark"
                 icon="none"

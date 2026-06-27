@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
 import { FiX } from "react-icons/fi";
 import { navLinks } from "@/data/siteContent";
+import { handleHashNavigation } from "@/utils/helpers";
 import { easeOut } from "@/utils/motion";
 
 type MobileNavDrawerProps = {
@@ -64,7 +65,13 @@ export default function MobileNavDrawer({ isOpen, onClose }: MobileNavDrawerProp
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noopener noreferrer" : undefined}
-                    onClick={onClose}
+                    onClick={(event) => {
+                      if (!item.external && handleHashNavigation(event, item.href)) {
+                        onClose();
+                      } else if (!item.external) {
+                        onClose();
+                      }
+                    }}
                     className="block rounded-lg px-3 py-3.5 text-base font-medium text-text-main transition-colors hover:bg-background-contrast"
                   >
                     {item.label}

@@ -1,8 +1,11 @@
+import { siteConfig } from "@/config/site.config";
+
 export const sectionIds = {
   consultoria: "consultoria",
   servicios: "servicios",
   proceso: "proceso",
   sobreMi: "sobre-mi",
+  newsletter: "newsletter",
   contacto: "contacto"
 } as const;
 
@@ -17,4 +20,22 @@ export const smoothScrollTo = (id: string) => {
   }
 
   target.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
+export const buildWhatsAppUrl = (message = siteConfig.contact.whatsappMessage) => {
+  const encodedMessage = encodeURIComponent(message);
+  return `https://wa.me/${siteConfig.contact.whatsappPhone}?text=${encodedMessage}`;
+};
+
+export const handleHashNavigation = (
+  event: { preventDefault: () => void },
+  href: string
+) => {
+  if (!href.startsWith("#") || href.length <= 1) {
+    return false;
+  }
+
+  event.preventDefault();
+  smoothScrollTo(href.slice(1));
+  return true;
 };

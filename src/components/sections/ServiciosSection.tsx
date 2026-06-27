@@ -3,6 +3,7 @@ import Container from "@/components/common/Container";
 import SectionHeading from "@/components/common/SectionHeading";
 import ButtonCTA from "@/components/common/ButtonCTA";
 import { services } from "@/data/siteContent";
+import { buildWhatsAppUrl } from "@/utils/helpers";
 import { fadeInView, sectionReveal, staggerItem, staggerList } from "@/utils/motion";
 
 function ServiceCell({
@@ -37,10 +38,11 @@ function ServiceCell({
 
       <div className="mt-8 md:mt-10">
         <ButtonCTA
-          href="#contacto"
+          href={buildWhatsAppUrl()}
           label="Agenda una reunión"
           variant="dark"
           icon="none"
+          external
           className="px-5 py-2.5 text-xs md:text-sm"
         />
       </div>

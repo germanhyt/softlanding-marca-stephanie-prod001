@@ -6,7 +6,7 @@ import Container from "@/components/common/Container";
 import MobileNavDrawer from "@/components/common/MobileNavDrawer";
 import HeroHighlightsStrip from "@/components/sections/HeroHighlightsStrip";
 import { easeOut, staggerItem, staggerList } from "@/utils/motion";
-import { smoothScrollTo } from "@/utils/helpers";
+import { buildWhatsAppUrl, handleHashNavigation, smoothScrollTo } from "@/utils/helpers";
 
 const scrollTarget = "servicios";
 
@@ -26,7 +26,7 @@ export default function HeroSection() {
         >
           <a href="#" className="shrink-0" aria-label="Stephanie Hoyle — inicio">
             <img
-              src="/logo.png"
+              src="/logo.webp"
               alt="Stephanie Hoyle — Growth strategy"
               width={220}
               height={56}
@@ -37,10 +37,11 @@ export default function HeroSection() {
 
           <div className="flex items-center gap-3 md:gap-4">
             <ButtonCTA
-              href="#contacto"
+              href={buildWhatsAppUrl()}
               label="Hablemos"
               variant="dark"
               icon="none"
+              external
               className="px-5 py-2.5 text-xs md:text-sm"
             />
             <button
@@ -78,7 +79,7 @@ export default function HeroSection() {
             <motion.div variants={staggerItem} className="mt-8">
               <ButtonCTA
                 href={`#${scrollTarget}`}
-                label="Elegí tu estrategia"
+                label="Elige tu estrategia"
                 variant="dark"
                 icon="arrow-down"
                 onClick={(event) => {
