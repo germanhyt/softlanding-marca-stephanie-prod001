@@ -19,8 +19,9 @@ export default function SobreMiSection() {
           Sobre mí
         </motion.p>
 
-        <div className="grid items-start gap-12 md:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] md:gap-10 lg:gap-16 xl:gap-20">
-          <motion.div className="mx-auto w-full max-w-sm md:max-w-none" {...slideFromLeft}>
+    {/* // al responsive el sgundo elemento al primero y el primero al segundo */}
+        <div className="grid items-start gap-12 md:grid-cols-[minmax(0,0.92fr)_minmax(0,1.12fr)] md:gap-10 lg:gap-16 xl:gap-20">
+          <motion.div className="mx-auto w-full max-w-sm md:max-w-none order-2 md:order-1" {...slideFromLeft}>
             <img
               src="/images/stephanie-portrait.webp"
               alt="Retrato ilustrado de Stephanie Hoyle"
@@ -29,13 +30,13 @@ export default function SobreMiSection() {
             />
           </motion.div>
 
-          <motion.div className="md:pt-1" {...slideFromRight}>
+          <motion.div className="md:pt-1 order-1 md:order-2" {...slideFromRight}>
             <h2 className="text-3xl leading-[1.15] text-text-dark md:text-4xl lg:text-[2.75rem] lg:leading-[1.12]">
               <span className="font-sans font-bold">Estratega de crecimiento </span>
               <span className="font-serif italic font-medium">con raíces en el marketing y el dato.</span>
             </h2>
 
-            <div className="mt-8 space-y-5 text-base leading-relaxed text-text-main md:mt-10 md:text-lg md:leading-8">
+            <div className="mt-8 space-y-5 text-base leading-relaxed text-text-main md:mt-10 md:text-lg md:leading-[1.4]	">
               {sobreMiParagraphs.map((paragraph, index) => (
                 <motion.p
                   key={paragraph}
