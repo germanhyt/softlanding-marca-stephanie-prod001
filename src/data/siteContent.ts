@@ -99,6 +99,15 @@ export const processSteps = [
   }
 ];
 
+export const clientBrands = [
+  { name: "UTEC", logo: "/images/marcas/utec.webp" },
+  { name: "Laboratoria", logo: "/images/marcas/laboratoria.webp" },
+  { name: "Pacasmayo", logo: "/images/marcas/pacasmayo.webp" },
+  { name: "Interbank", logo: "/images/marcas/interbank.webp" },
+  { name: "Propel", logo: "/images/marcas/propel.webp" },
+  { name: "La Victoria Lab", logo: "/images/marcas/la-victoria-lab.webp" }
+];
+
 export const sobreMiParagraphs = [
   "Con más de 10 años trabajando en la intersección de marketing, datos y estrategia, he acompañado a startups en sus primeras etapas, a scaleups en momentos críticos de crecimiento y a organizaciones de impacto en la construcción de sistemas sostenibles.",
   "Mi trabajo no empieza con tácticas. Empieza entendiendo el negocio, el equipo y los objetivos reales — y desde ahí, construimos juntos la estrategia que tiene más posibilidades de funcionar.",

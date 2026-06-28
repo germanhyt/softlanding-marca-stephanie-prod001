@@ -21,7 +21,7 @@ export default function FooterSection() {
         >
           <SectionHeading
             eyebrow={undefined}
-            titleSans="¿Tu equipo necesita más "
+            titleSans="¿Tu equipo necesita más"
             titleSerif="claridad y dirección"
             titleSansAfter="?"
             subtitle="Conversemos sobre tus objetivos y veamos cómo puedo ayudarte a construir una estrategia de crecimiento que realmente funcione."
