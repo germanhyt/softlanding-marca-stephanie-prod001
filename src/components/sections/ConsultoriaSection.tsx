@@ -11,8 +11,7 @@ export default function ConsultoriaSection() {
         <motion.div {...fadeInView}>
           <SectionHeading
             eyebrow="Consultoría"
-            titleSans="Acompañamiento estratégico para organizaciones en "
-            titleSerif="crecimiento."
+            titleSans="Acompañamiento estratégico"
             className="mb-10 md:mb-14"
           />
         </motion.div>
@@ -26,13 +25,13 @@ export default function ConsultoriaSection() {
         >
           <motion.article
             variants={staggerItem}
-            className="relative overflow-hidden rounded-2xl bg-primary-light p-6 pb-0 md:p-8 md:pb-0"
+            className="relative overflow-hidden rounded-2xl bg-primary-main p-6 pb-0 md:p-8 md:pb-0"
           >
-            <h3 className="text-sm font-bold uppercase tracking-wide text-text-dark">Ideal para equipos que</h3>
-            <ul className="mt-5 space-y-3 text-sm leading-relaxed text-text-main md:text-base">
+            <h3 className="text-sm font-bold uppercase tracking-wide text-white">Ideal para equipos que</h3>
+            <ul className="mt-5 space-y-3 text-sm leading-relaxed text-white md:text-base">
               {consultoriaIdealPara.map((item) => (
                 <li key={item} className="flex gap-2">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-text-dark" aria-hidden />
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white" aria-hidden />
                   <span>{item}</span>
                 </li>
               ))}
@@ -47,13 +46,13 @@ export default function ConsultoriaSection() {
 
           <motion.article
             variants={staggerItem}
-            className="relative overflow-hidden rounded-2xl bg-primary-light p-6 pb-0 md:p-8 md:pb-0"
+            className="relative overflow-hidden rounded-2xl bg-primary-main p-6 pb-0 md:p-8 md:pb-0"
           >
-            <h3 className="text-sm font-bold uppercase tracking-wide text-text-dark">Trabajamos juntas/os en</h3>
-            <ul className="mt-5 space-y-3 text-sm leading-relaxed text-text-main md:text-base">
+            <h3 className="text-sm font-bold uppercase tracking-wide text-white">Trabajamos juntas/os en</h3>
+            <ul className="mt-5 space-y-3 text-sm leading-relaxed text-white md:text-base">
               {consultoriaTrabajamosEn.map((item) => (
                 <li key={item.label}>
-                  <span className="font-bold text-text-dark">{item.label}</span>
+                  <span className="font-bold text-white">{item.label}</span>
                   <span> — {item.description}</span>
                 </li>
               ))}

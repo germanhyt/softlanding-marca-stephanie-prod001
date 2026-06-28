@@ -2,7 +2,7 @@ import { heroHighlights } from "@/data/siteContent";
 
 export default function HeroHighlightsStrip() {
   return (
-    <div className="mt-10 rounded-2xl bg-background-contrast px-4 py-5 md:mt-14 md:px-8 md:py-6">
+    <div className="mt-10 rounded-2xl bg-primary-light px-4 py-5 md:mt-14 md:px-8 md:py-6">
       <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
         {heroHighlights.map((item) => (
           <li key={item.label} className="flex items-center gap-3">

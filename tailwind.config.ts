@@ -30,7 +30,8 @@ const config: Config = {
       colors: {
         primary: {
           light: "#E3FF87",
-          dark: "#1C3727"
+          dark: "#1C3727",
+          main: "#3B4941",
         },
         text: {
           main: "#3B4941",

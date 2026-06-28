@@ -47,7 +47,7 @@ export default function FooterSection() {
         >
           <a href="#" className="shrink-0" aria-label="Stephanie Hoyle — inicio">
             <img
-              src="/logo-secundario.png"
+              src="/logo-secundario.webp"
               alt="Stephanie — Growth strategy"
               width={160}
               height={40}

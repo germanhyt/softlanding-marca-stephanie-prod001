@@ -15,7 +15,7 @@ const variantClasses = {
   light:
     "bg-primary-light text-primary-dark shadow-card hover:-translate-y-0.5 hover:bg-[#d7f96a]",
   dark: "bg-primary-dark text-white hover:bg-[#2a4f38]",
-  white: "bg-white text-primary-dark hover:bg-white/90"
+  white: "bg-white text-primary-dark hover:bg-primary-light hover:text-primary-dark"
 };
 
 export default function ButtonCTA({

@@ -22,17 +22,17 @@ function ServiceCell({
   return (
     <article className={`flex h-full flex-col p-8 md:p-10 lg:p-12 ${className}`.trim()}>
       <div className="mb-10 flex items-start justify-between gap-4 md:mb-12">
-        <span className="text-sm font-normal text-text-muted/70">{number}</span>
-        <span className="rounded-full border border-text-dark px-3 py-1 text-[0.625rem] font-semibold uppercase tracking-[0.14em] text-text-dark">
+        <span className="text-sm font-normal text-white/45">{number}</span>
+        <span className="rounded-full border border-primary-light px-3 py-1 text-[0.625rem] font-semibold uppercase tracking-[0.14em] text-primary-light">
           {tag}
         </span>
       </div>
 
-      <h3 className="text-base font-bold uppercase leading-snug tracking-wide text-text-dark md:text-lg lg:text-xl">
+      <h3 className="text-base font-bold uppercase leading-snug tracking-wide text-white md:text-lg lg:text-xl">
         {title}
       </h3>
 
-      <p className="mt-5 flex-1 text-sm leading-relaxed text-text-main md:mt-6 md:text-base md:leading-7">
+      <p className="mt-5 flex-1 text-sm leading-relaxed text-white/75 md:mt-6 md:text-base md:leading-7">
         {description}
       </p>
 
@@ -40,7 +40,7 @@ function ServiceCell({
         <ButtonCTA
           href={buildWhatsAppUrl()}
           label="Agenda una reunión"
-          variant="dark"
+          variant="white"
           icon="none"
           external
           className="px-5 py-2.5 text-xs md:text-sm"
@@ -52,7 +52,7 @@ function ServiceCell({
 
 export default function ServiciosSection() {
   return (
-    <motion.section id="servicios" className="bg-primary-light py-16 md:py-24" {...sectionReveal}>
+    <motion.section id="servicios" className="py-16 md:py-24" {...sectionReveal}>
       <Container>
         <motion.div {...fadeInView}>
           <SectionHeading
@@ -64,7 +64,7 @@ export default function ServiciosSection() {
         </motion.div>
 
         <motion.div
-          className="overflow-hidden rounded-3xl bg-[#F2EBE3]"
+          className="overflow-hidden rounded-3xl bg-[#3B4941]"
           variants={staggerList}
           initial="hidden"
           whileInView="show"
@@ -76,8 +76,8 @@ export default function ServiciosSection() {
                 key={service.number}
                 variants={staggerItem}
                 className={[
-                  index % 2 === 0 ? "md:border-r md:border-text-dark/[0.12]" : "",
-                  index < 2 ? "border-b border-text-dark/[0.12]" : ""
+                  index % 2 === 0 ? "md:border-r md:border-white/10" : "",
+                  index < 2 ? "border-b border-white/10" : ""
                 ]
                   .filter(Boolean)
                   .join(" ")}
