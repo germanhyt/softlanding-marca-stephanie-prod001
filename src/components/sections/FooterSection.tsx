@@ -10,7 +10,7 @@ export default function FooterSection() {
   const year = new Date().getFullYear();
 
   return (
-    <motion.footer id="contacto" className="bg-[#1A1A1A] text-white" {...sectionReveal}>
+    <motion.footer id="contacto" className="bg-primary-main text-white" {...sectionReveal}>
       <Container>
         <motion.div
           className="py-16 text-center md:py-24"
