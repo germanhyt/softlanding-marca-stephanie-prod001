@@ -111,22 +111,22 @@ export const newsletterPosts = [
     excerpt:
       "La mayoría de empresas está entrando a la conversación sobre inteligencia artificial por el lugar equivocado.",
     href: "https://sustainablecareergrowth.substack.com/p/marketing-growth-e-ia-como-usar-ia",
-    image:
-      "https://substackcdn.com/image/fetch/$s_!23ES!,w_1250,h_833,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff7446b50-e28f-4a2d-a624-2bacb36349f1_500x500.jpeg"
+    image: "/images/newsletter-marketing.webp",
+    alt: "Ilustración sobre marketing, growth e inteligencia artificial."
   },
   {
     title: "Antes de diseñar crecimiento, entiende a quién quieres servir",
     excerpt:
       "En el primer artículo hablamos de algo fundamental: definir qué significa crecer. Este segundo paso es igual de importante y, muchas veces, incluso más…",
     href: "https://sustainablecareergrowth.substack.com/p/antes-de-disenar-crecimiento-entiende",
-    image:
-      "https://substackcdn.com/image/fetch/$s_!R43x!,w_848,h_564,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3013db14-afdf-4226-83e5-2f46973e7420_894x714.png"
+    image: "/images/newsletter-options.webp",
+    alt: "Meme sobre demasiadas opciones al diseñar crecimiento."
   },
   {
     title: "Cómo elegir las palancas correctas y diseñar crecimiento que realmente avanza",
     excerpt: "La parte más importante del proceso: convertir diagnóstico en decisiones",
     href: "https://sustainablecareergrowth.substack.com/p/como-elegir-las-palancas-correctas",
-    image:
-      "https://substackcdn.com/image/fetch/$s_!T_f6!,w_848,h_564,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d285199-f687-41cb-9091-80499faa4421_696x496.png"
+    image: "/images/newsletter-conocer.webp",
+    alt: "Meme sobre elegir las palancas correctas de crecimiento."
   }
 ];

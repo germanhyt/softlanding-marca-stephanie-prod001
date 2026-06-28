@@ -31,11 +31,11 @@ export default function NewsletterSection() {
                 rel="noopener noreferrer"
                 className="group block"
               >
-                <div className="overflow-hidden rounded-xl bg-white">
+                <div className="flex  w-full items-center justify-center overflow-hidden rounded-xl bg-white">
                   <img
                     src={post.image}
-                    alt=""
-                    className="aspect-[3/2] w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+                    alt={post.alt}
+                    className="h-full w-full object-contain transition duration-300 group-hover:scale-[1.02]"
                     loading="lazy"
                   />
                 </div>
