@@ -34,8 +34,8 @@ export default function SobreMiSection() {
             {...slideFromRight}
           >
             <h2 className="text-3xl leading-[1.15] text-white md:text-4xl lg:text-[2.75rem] lg:leading-[1.12]">
-              <span className="font-sans font-bold">Estratega de crecimiento </span>
-              <span className="font-serif italic font-medium">con raíces en el marketing y el dato.</span>
+              <span className="font-sans font-bold">Estrategia para construir </span>
+              <span className="font-serif italic font-medium">crecimiento sostenible.</span>
             </h2>
 
             <div className="mt-8 space-y-5 text-base leading-[1.6] text-white/75 md:mt-10 md:text-base 2xl:text-lg 2xl:leading-[1.6]">

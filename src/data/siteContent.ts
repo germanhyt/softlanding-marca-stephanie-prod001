@@ -58,7 +58,7 @@ export const services = [
     tag: "Liderazgo",
     title: "Fractional Head of Growth",
     description:
-      "Actúo como tu Growth Lead fraccionado. Lidero la función de crecimiento de manera continua, embebida en tu equipo, sin el costo de una contratación full-time."
+      "Actúo como tu Head of Growth. Me integro a tu equipo para definir la estrategia, priorizar iniciativas y liderar la ejecución. Obtienes liderazgo senior sin el costo de una contratación full-time."
   },
   {
     number: "03",
@@ -90,7 +90,7 @@ export const processSteps = [
   {
     title: "Acompañar",
     description:
-      "Presencia activa durante la ejecución. No entrego un deck y me voy — me quedo mientras haga falta."
+      "Presencia activa durante la ejecución. No entrego un deck y me voy, me quedo mientras haga falta."
   },
   {
     title: "Medir",
@@ -109,9 +109,9 @@ export const clientBrands = [
 ];
 
 export const sobreMiParagraphs = [
-  "Con más de 10 años trabajando en la intersección de marketing, datos y estrategia, he acompañado a startups en sus primeras etapas, a scaleups en momentos críticos de crecimiento y a organizaciones de impacto en la construcción de sistemas sostenibles.",
-  "Mi trabajo no empieza con tácticas. Empieza entendiendo el negocio, el equipo y los objetivos reales — y desde ahí, construimos juntos la estrategia que tiene más posibilidades de funcionar.",
-  "Me interesa el crecimiento que dura: el que está alineado con la identidad de la organización, soportado por datos y ejecutado con criterio."
+  "Las empresas no crecen por hacer más marketing. Crecen cuando saben dónde enfocar sus esfuerzos.",
+  "Durante más de 10 años he ayudado a startups, empresas en crecimiento y organizaciones de impacto a identificar oportunidades, definir estrategias de crecimiento y convertirlas en resultados.",
+  "Mi trabajo es aportar claridad, foco y dirección para que el crecimiento deje de depender de acciones aisladas y se convierta en una capacidad del negocio."
 ];
 
 export const newsletterPosts = [
