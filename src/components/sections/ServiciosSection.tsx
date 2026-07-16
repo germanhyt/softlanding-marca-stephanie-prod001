@@ -52,7 +52,7 @@ function ServiceCell({
 
 export default function ServiciosSection() {
   return (
-    <motion.section id="servicios" className="pb-16 pt-10 md:pb-24 md:pt-12" {...sectionReveal}>
+    <motion.section id="servicios" className="pb-16 pt-4 md:pb-24 md:pt-2" {...sectionReveal}>
       <Container>
         <motion.div {...fadeInView}>
           <SectionHeading

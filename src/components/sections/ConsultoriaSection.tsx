@@ -6,7 +6,7 @@ import { fadeInView, sectionReveal, staggerItem, staggerList } from "@/utils/mot
 
 export default function ConsultoriaSection() {
   return (
-    <motion.section id="consultoria" className="py-16 md:py-24" {...sectionReveal}>
+    <motion.section id="consultoria" className="pb-20 pt-16 md:pb-28 md:pt-24" {...sectionReveal}>
       <Container>
         <motion.div {...fadeInView}>
           <SectionHeading
@@ -67,15 +67,15 @@ export default function ConsultoriaSection() {
         </motion.div>
 
         <motion.div
-          className="mt-16 px-4 md:mt-24 md:px-8"
+          className="mt-20 flex flex-col items-center px-6 md:mt-28 md:px-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="mx-auto mb-4 h-px w-36 bg-text-dark/25 md:mb-2" aria-hidden />
+          <div className="mb-8 h-px w-28 bg-text-dark/25 md:mb-10 md:w-36" aria-hidden />
 
-          <blockquote className="mx-auto max-w-3xl text-center font-serif text-xl italic leading-relaxed text-text-dark md:text-2xl lg:text-[1.75rem] lg:leading-snug">
+          <blockquote className="max-w-2xl text-center font-serif text-xl italic leading-relaxed text-text-dark md:max-w-3xl md:text-2xl lg:text-[1.75rem] lg:leading-snug">
             No soy una freelancer que ejecuta tareas. Soy una socia estratégica que trabaja de cerca con tu equipo y se
             involucra en el proceso para{" "}
             <span className="underline decoration-primary-light decoration-[3px] underline-offset-[5px]">
