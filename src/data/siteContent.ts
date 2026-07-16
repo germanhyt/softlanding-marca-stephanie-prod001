@@ -105,7 +105,9 @@ export const clientBrands = [
   { name: "Pacasmayo", logo: "/images/marcas/pacasmayo.webp" },
   { name: "Interbank", logo: "/images/marcas/interbank.webp" },
   { name: "Propel", logo: "/images/marcas/propel.webp" },
-  { name: "La Victoria Lab", logo: "/images/marcas/la-victoria-lab.webp" }
+  { name: "La Victoria Lab", logo: "/images/marcas/la-victoria-lab.webp" },
+  { name: "Oxxo", logo: "/images/marcas/oxxo.webp" },
+  { name: "Tul", logo: "/images/marcas/tul.webp" }
 ];
 
 export const sobreMiParagraphs = [
