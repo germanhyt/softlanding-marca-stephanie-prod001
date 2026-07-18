@@ -1,29 +1,55 @@
 ---
 import { siteConfig } from "@/config/site.config";
-import { seoConfig } from "@/config/seoConfig";
+import { getSeoConfig } from "@/config/seoConfig";
+import { defaultLocale, getLocalePath, locales, type Locale } from "@/i18n";
 import "@/styles/global.css";
 
 type Props = {
+  locale?: Locale;
   title?: string;
   description?: string;
   canonical?: string;
   image?: string;
 };
 
-const { title = seoConfig.title, description = seoConfig.description, canonical = seoConfig.canonical, image = seoConfig.ogImage } = Astro.props;
+const locale = Astro.props.locale ?? defaultLocale;
+const seo = getSeoConfig(locale);
+
+const {
+  title = seo.title,
+  description = seo.description,
+  canonical = seo.canonical,
+  image = seo.ogImage
+} = Astro.props;
+
+const alternateLinks = locales.map((code) => ({
+  code,
+  href: new URL(getLocalePath(code), siteConfig.siteUrl).toString()
+}));
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={seo.htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/webp" href="/favicon.webp" sizes="any"/>
+    <link rel="icon" type="image/webp" href="/favicon.webp" sizes="any" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <meta name="keywords" content={seoConfig.keywords.join(", ")} />
+    <meta name="keywords" content={seo.keywords.join(", ")} />
     <meta name="author" content={siteConfig.author} />
     <link rel="canonical" href={canonical} />
+
+    {
+      alternateLinks.map(({ code, href }) => (
+        <link rel="alternate" hreflang={code} href={href} />
+      ))
+    }
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(getLocalePath(defaultLocale), siteConfig.siteUrl).toString()}
+    />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -31,7 +57,7 @@ const { title = seoConfig.title, description = seoConfig.description, canonical 
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={image} />
     <meta property="og:site_name" content={siteConfig.siteName} />
-    <meta property="og:locale" content={siteConfig.locale} />
+    <meta property="og:locale" content={seo.ogLocale} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />

@@ -22,7 +22,7 @@ export const smoothScrollTo = (id: string) => {
   target.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
-export const buildWhatsAppUrl = (message = siteConfig.contact.whatsappMessage) => {
+export const buildWhatsAppUrl = (message: string) => {
   const encodedMessage = encodeURIComponent(message);
   return `https://wa.me/${siteConfig.contact.whatsappPhone}?text=${encodedMessage}`;
 };

@@ -14,6 +14,13 @@ const base = process.env.BASE_PATH ?? "/";
 export default defineConfig({
   site,
   base,
+  i18n: {
+    defaultLocale: "es",
+    locales: ["es", "en"],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  },
   integrations: [
     react(),
     tailwind({
@@ -21,7 +28,14 @@ export default defineConfig({
     }),
     sitemap({
       changefreq: "weekly",
-      priority: 0.7
+      priority: 0.7,
+      i18n: {
+        defaultLocale: "es",
+        locales: {
+          es: "es-PE",
+          en: "en-US"
+        }
+      }
     })
   ],
   output: "static"

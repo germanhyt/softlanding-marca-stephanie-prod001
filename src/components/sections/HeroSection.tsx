@@ -3,19 +3,39 @@ import { motion } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
 import ButtonCTA from "@/components/common/ButtonCTA";
 import Container from "@/components/common/Container";
+import LanguageSwitcher from "@/components/common/LanguageSwitcher";
 import MobileNavDrawer from "@/components/common/MobileNavDrawer";
 import HeroHighlightsStrip from "@/components/sections/HeroHighlightsStrip";
+import type { SiteContent } from "@/i18n";
 import { easeOut, staggerItem, staggerList } from "@/utils/motion";
-import { buildWhatsAppUrl, handleHashNavigation, smoothScrollTo } from "@/utils/helpers";
+import { buildWhatsAppUrl, smoothScrollTo } from "@/utils/helpers";
 
 const scrollTarget = "servicios";
 
-export default function HeroSection() {
+type HeroSectionProps = {
+  content: SiteContent;
+};
+
+export default function HeroSection({ content }: HeroSectionProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { ui, hero } = content;
 
   return (
     <section className="relative overflow-hidden bg-background-base pb-10 pt-6 md:pb-16 md:pt-8">
-      <MobileNavDrawer isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+      <MobileNavDrawer
+        isOpen={isMenuOpen}
+        onClose={() => setIsMenuOpen(false)}
+        navLinks={content.nav}
+        locale={content.locale}
+        labels={{
+          menu: ui.menu,
+          closeMenu: ui.closeMenu,
+          navAria: ui.menu,
+          languageSwitchAria: ui.languageSwitchAria,
+          languageEs: ui.languageEs,
+          languageEn: ui.languageEn
+        }}
+      />
 
       <Container>
         <motion.header
@@ -24,10 +44,10 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: easeOut }}
         >
-          <a href="#" className="shrink-0" aria-label="Stephanie Hoyle — inicio">
+          <a href="#" className="shrink-0" aria-label={ui.homeAria}>
             <img
               src="/logo.webp"
-              alt="Stephanie Hoyle — Growth strategy"
+              alt={ui.logoAlt}
               width={220}
               height={56}
               className="h-12 w-auto md:h-14"
@@ -36,9 +56,18 @@ export default function HeroSection() {
           </a>
 
           <div className="flex items-center gap-3 md:gap-4">
+            <LanguageSwitcher
+              locale={content.locale}
+              labels={{
+                aria: ui.languageSwitchAria,
+                es: ui.languageEs,
+                en: ui.languageEn
+              }}
+              className="hidden sm:flex"
+            />
             <ButtonCTA
-              href={buildWhatsAppUrl()}
-              label="Hablemos"
+              href={buildWhatsAppUrl(content.whatsappMessage)}
+              label={ui.letsTalk}
               variant="dark"
               icon="none"
               external
@@ -47,7 +76,7 @@ export default function HeroSection() {
             <button
               type="button"
               className="rounded-md p-2 text-text-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark"
-              aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-label={isMenuOpen ? ui.closeMenu : ui.openMenu}
               aria-expanded={isMenuOpen}
               onClick={() => setIsMenuOpen((prev) => !prev)}
             >
@@ -57,29 +86,24 @@ export default function HeroSection() {
         </motion.header>
 
         <div className="grid items-center gap-8 md:grid-cols-2 md:gap-10 lg:gap-14">
-          <motion.div
-            variants={staggerList}
-            initial="hidden"
-            animate="show"
-          >
+          <motion.div variants={staggerList} initial="hidden" animate="show">
             <motion.h1
               variants={staggerItem}
               className="text-4xl leading-[1.1] text-text-dark sm:text-5xl md:text-[3.25rem] lg:text-[3.5rem]"
             >
-              <span className="block font-sans font-bold">Estrategias que impulsan</span>
-              <span className="mt-1 block font-serif text-[1.05em] italic font-medium">negocios reales</span>
+              <span className="block font-sans font-bold">{hero.titleSans}</span>
+              <span className="mt-1 block font-serif text-[1.05em] italic font-medium">{hero.titleSerif}</span>
             </motion.h1>
             <motion.p
               variants={staggerItem}
               className="mt-6 max-w-xl text-base leading-relaxed text-text-main md:text-lg"
             >
-              Ayudo a startups y negocios a crecer con estrategias de marketing basadas en datos, investigación y
-              creatividad.
+              {hero.subtitle}
             </motion.p>
             <motion.div variants={staggerItem} className="mt-8">
               <ButtonCTA
                 href={`#${scrollTarget}`}
-                label="Elige tu estrategia"
+                label={ui.chooseStrategy}
                 variant="dark"
                 icon="arrow-down"
                 onClick={(event) => {
@@ -98,7 +122,7 @@ export default function HeroSection() {
           >
             <img
               src="/images/hero-banner.webp"
-              alt="Ilustración de estrategia: tablero de ajedrez con camino hacia la meta."
+              alt={hero.imageAlt}
               className="h-full w-full object-contain"
               loading="eager"
             />
@@ -110,7 +134,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.35, ease: easeOut }}
         >
-          <HeroHighlightsStrip />
+          <HeroHighlightsStrip highlights={hero.highlights} />
         </motion.div>
       </Container>
     </section>

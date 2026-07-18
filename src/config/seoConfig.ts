@@ -1,16 +1,18 @@
 import { siteConfig } from "@/config/site.config";
+import { getSiteContent, type Locale } from "@/i18n";
 
-export const seoConfig = {
-  title: "Stephanie Hoyle | Growth strategy para negocios reales",
-  description:
-    "Consultoría de growth strategy para startups y negocios en crecimiento. Estrategias basadas en datos, investigación y creatividad.",
-  canonical: siteConfig.siteUrl,
-  ogImage: `${siteConfig.siteUrl}/images/hero-banner.webp`,
-  keywords: [
-    "growth strategy",
-    "consultoría de crecimiento",
-    "marketing basado en datos",
-    "estrategia de negocio",
-    "Stephanie Hoyle"
-  ]
-};
+export function getSeoConfig(locale: Locale) {
+  const content = getSiteContent(locale);
+  const path = locale === "es" ? "/" : `/${locale}/`;
+  const canonical = new URL(path, siteConfig.siteUrl).toString();
+
+  return {
+    title: content.seo.title,
+    description: content.seo.description,
+    keywords: content.seo.keywords,
+    canonical,
+    ogImage: `${siteConfig.siteUrl}/images/hero-banner.webp`,
+    htmlLang: content.htmlLang,
+    ogLocale: content.ogLocale
+  };
+}

@@ -7,12 +7,9 @@ export const siteConfig = {
   siteName: "Stephanie Hoyle",
   author: "Stephanie Hoyle",
   role: "Growth strategy",
-  locale: "es-PE",
   contact: {
     email: "shoylec88@gmail.com",
-    whatsappPhone: "51951716163",
-    whatsappMessage:
-      "Hola Stephanie, me gustaría agendar una reunión para conversar sobre estrategia de crecimiento para mi negocio."
+    whatsappPhone: "51951716163"
   },
   externalLinks: {
     newsletter: "https://sustainablecareergrowth.substack.com/",

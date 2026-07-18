@@ -3,11 +3,17 @@ import ButtonCTA from "@/components/common/ButtonCTA";
 import Container from "@/components/common/Container";
 import SectionHeading from "@/components/common/SectionHeading";
 import { siteConfig } from "@/config/site.config";
+import type { SiteContent } from "@/i18n";
 import { buildWhatsAppUrl } from "@/utils/helpers";
 import { easeOut, sectionReveal } from "@/utils/motion";
 
-export default function FooterSection() {
+type FooterSectionProps = {
+  content: SiteContent;
+};
+
+export default function FooterSection({ content }: FooterSectionProps) {
   const year = new Date().getFullYear();
+  const { footer, ui, whatsappMessage } = content;
 
   return (
     <motion.footer id="contacto" className="bg-primary-main text-white" {...sectionReveal}>
@@ -21,17 +27,17 @@ export default function FooterSection() {
         >
           <SectionHeading
             eyebrow={undefined}
-            titleSans="¿Tu equipo necesita más"
-            titleSerif="claridad y dirección"
-            titleSansAfter="?"
-            subtitle="Conversemos sobre tus objetivos y veamos cómo puedo ayudarte a construir una estrategia de crecimiento que realmente funcione."
+            titleSans={footer.titleSans}
+            titleSerif={footer.titleSerif}
+            titleSansAfter={footer.titleSansAfter}
+            subtitle={footer.subtitle}
             centered
             inverted
             className="mb-8"
           />
           <ButtonCTA
-            href={buildWhatsAppUrl()}
-            label="Agenda una reunión"
+            href={buildWhatsAppUrl(whatsappMessage)}
+            label={ui.bookMeeting}
             variant="white"
             icon="none"
             external
@@ -45,10 +51,10 @@ export default function FooterSection() {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5, delay: 0.1, ease: easeOut }}
         >
-          <a href="#" className="shrink-0" aria-label="Stephanie Hoyle — inicio">
+          <a href="#" className="shrink-0" aria-label={ui.homeAria}>
             <img
               src="/logo-secundario.webp"
-              alt="Stephanie — Growth strategy"
+              alt={ui.logoAlt}
               width={160}
               height={40}
               className="h-10 w-auto"
@@ -60,12 +66,11 @@ export default function FooterSection() {
             <p>© {year} · Growth Strategy & Marketing Consulting</p>
           </div>
 
-          <nav aria-label="Enlaces del pie de página">
+          <nav aria-label={ui.footerNavAria}>
             <ul className="flex items-center gap-6 text-sm font-medium text-white/80">
               <li>
                 <a href={`mailto:${siteConfig.contact.email}`} className="block hover:text-white">
-                  {/* {siteConfig.contact.email} */}
-                  Correo
+                  {ui.email}
                 </a>
               </li>
               <li>

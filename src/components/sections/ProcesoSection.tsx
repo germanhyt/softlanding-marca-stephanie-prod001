@@ -1,9 +1,15 @@
 import { motion } from "framer-motion";
 import Container from "@/components/common/Container";
-import { processSteps } from "@/data/siteContent";
+import type { SiteContent } from "@/i18n";
 import { easeOut, sectionReveal, staggerItem, staggerList } from "@/utils/motion";
 
-export default function ProcesoSection() {
+type ProcesoSectionProps = {
+  content: SiteContent;
+};
+
+export default function ProcesoSection({ content }: ProcesoSectionProps) {
+  const { proceso } = content;
+
   return (
     <motion.section id="proceso" className="py-16 md:py-24" {...sectionReveal}>
       <Container>
@@ -14,10 +20,12 @@ export default function ProcesoSection() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, ease: easeOut }}
         >
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-text-dark/70">Proceso</p>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-text-dark/70">
+            {proceso.eyebrow}
+          </p>
           <h2 className="text-3xl leading-[1.12] text-text-dark md:text-5xl lg:text-[3.25rem]">
-            <span className="font-serif font-bold">Cómo </span>
-            <span className="font-serif italic font-medium">trabajo.</span>
+            <span className="font-serif font-bold">{proceso.titleBefore}</span>
+            <span className="font-serif italic font-medium">{proceso.titleAfter}</span>
           </h2>
         </motion.header>
 
@@ -28,7 +36,7 @@ export default function ProcesoSection() {
           whileInView="show"
           viewport={{ once: true, amount: 0.15 }}
         >
-          {processSteps.map((step, index) => (
+          {proceso.steps.map((step, index) => (
             <motion.article
               key={step.title}
               variants={staggerItem}
@@ -65,7 +73,7 @@ export default function ProcesoSection() {
         >
           <hr className="border-t border-text-dark/20" />
           <p className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 bg-background-base px-4 font-serif text-base italic text-text-dark md:text-lg">
-            Un proceso circular, no lineal.
+            {proceso.circularNote}
           </p>
         </motion.div>
       </Container>

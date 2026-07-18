@@ -1,16 +1,34 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
 import { FiX } from "react-icons/fi";
-import { navLinks } from "@/data/siteContent";
+import LanguageSwitcher from "@/components/common/LanguageSwitcher";
+import type { Locale } from "@/i18n";
+import type { NavLink } from "@/i18n/types";
 import { handleHashNavigation } from "@/utils/helpers";
 import { easeOut } from "@/utils/motion";
 
 type MobileNavDrawerProps = {
   isOpen: boolean;
   onClose: () => void;
+  navLinks: NavLink[];
+  locale: Locale;
+  labels: {
+    menu: string;
+    closeMenu: string;
+    navAria: string;
+    languageSwitchAria: string;
+    languageEs: string;
+    languageEn: string;
+  };
 };
 
-export default function MobileNavDrawer({ isOpen, onClose }: MobileNavDrawerProps) {
+export default function MobileNavDrawer({
+  isOpen,
+  onClose,
+  navLinks,
+  locale,
+  labels
+}: MobileNavDrawerProps) {
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
     return () => {
@@ -24,7 +42,7 @@ export default function MobileNavDrawer({ isOpen, onClose }: MobileNavDrawerProp
         <>
           <motion.button
             type="button"
-            aria-label="Cerrar menú"
+            aria-label={labels.closeMenu}
             className="fixed inset-0 z-40 bg-text-dark/45 backdrop-blur-[2px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -34,7 +52,7 @@ export default function MobileNavDrawer({ isOpen, onClose }: MobileNavDrawerProp
           />
 
           <motion.nav
-            aria-label="Navegación principal"
+            aria-label={labels.navAria}
             className="fixed right-0 top-0 z-50 flex h-full w-full max-w-xs flex-col bg-background-soft shadow-2xl sm:max-w-sm"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
@@ -42,11 +60,11 @@ export default function MobileNavDrawer({ isOpen, onClose }: MobileNavDrawerProp
             transition={{ duration: 0.38, ease: easeOut }}
           >
             <div className="flex items-center justify-between border-b border-primary-dark/10 px-5 py-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">Menú</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">{labels.menu}</p>
               <button
                 type="button"
                 onClick={onClose}
-                aria-label="Cerrar menú"
+                aria-label={labels.closeMenu}
                 className="rounded-md p-2 text-text-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark"
               >
                 <FiX size={24} />
@@ -79,6 +97,17 @@ export default function MobileNavDrawer({ isOpen, onClose }: MobileNavDrawerProp
                 </motion.li>
               ))}
             </ul>
+
+            <div className="border-t border-primary-dark/10 px-5 py-4 sm:hidden">
+              <LanguageSwitcher
+                locale={locale}
+                labels={{
+                  aria: labels.languageSwitchAria,
+                  es: labels.languageEs,
+                  en: labels.languageEn
+                }}
+              />
+            </div>
           </motion.nav>
         </>
       ) : null}

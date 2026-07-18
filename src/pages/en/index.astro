@@ -10,10 +10,10 @@ import NewsletterSection from "@/components/sections/NewsletterSection";
 import FooterSection from "@/components/sections/FooterSection";
 import { getSiteContent } from "@/i18n";
 
-const content = getSiteContent("es");
+const content = getSiteContent("en");
 ---
 
-<MainLayout locale="es">
+<MainLayout locale="en">
   <HeroSection client:load content={content} />
   <main>
     <ConsultoriaSection client:visible content={content} />

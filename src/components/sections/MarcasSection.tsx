@@ -1,17 +1,23 @@
 import { motion } from "framer-motion";
 import Container from "@/components/common/Container";
 import SectionHeading from "@/components/common/SectionHeading";
-import { clientBrands } from "@/data/siteContent";
+import type { SiteContent } from "@/i18n";
 import { sectionReveal, staggerItem, staggerList } from "@/utils/motion";
 
-export default function MarcasSection() {
+type MarcasSectionProps = {
+  content: SiteContent;
+};
+
+export default function MarcasSection({ content }: MarcasSectionProps) {
+  const { marcas, ui } = content;
+
   return (
     <motion.section id="clientes" className="overflow-x-clip py-16 md:py-24" {...sectionReveal}>
       <Container>
         <SectionHeading
-          eyebrow="Clientes"
-          titleSans="Marcas que impulsaron"
-          titleSerif="su crecimiento conmigo"
+          eyebrow={marcas.eyebrow}
+          titleSans={marcas.titleSans}
+          titleSerif={marcas.titleSerif}
           className="mb-12 md:mb-16 lg:mb-20"
         />
 
@@ -21,9 +27,9 @@ export default function MarcasSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          aria-label="Marcas con las que he trabajado"
+          aria-label={ui.brandsAria}
         >
-          {clientBrands.map((brand) => (
+          {marcas.brands.map((brand) => (
             <motion.li
               key={brand.name}
               variants={staggerItem}

@@ -2,17 +2,23 @@ import { motion } from "framer-motion";
 import Container from "@/components/common/Container";
 import ButtonCTA from "@/components/common/ButtonCTA";
 import { siteConfig } from "@/config/site.config";
-import { newsletterPosts } from "@/data/siteContent";
+import type { SiteContent } from "@/i18n";
 import { fadeInView, sectionReveal, staggerItem, staggerList } from "@/utils/motion";
 
-export default function NewsletterSection() {
+type NewsletterSectionProps = {
+  content: SiteContent;
+};
+
+export default function NewsletterSection({ content }: NewsletterSectionProps) {
+  const { newsletter, ui } = content;
+
   return (
     <motion.section id="newsletter" className="py-16 md:py-24" {...sectionReveal}>
       <Container>
         <motion.div {...fadeInView}>
           <h2 className="mb-10 text-3xl leading-[1.12] text-text-dark md:mb-14 md:text-5xl lg:text-[3.25rem]">
-            <span className="font-sans font-bold">Contenido para </span>
-            <span className="font-serif italic font-medium text-text-main">crecer y trascender</span>
+            <span className="font-sans font-bold">{newsletter.titleSans}</span>
+            <span className="font-serif italic font-medium text-text-main">{newsletter.titleSerif}</span>
           </h2>
         </motion.div>
 
@@ -23,15 +29,10 @@ export default function NewsletterSection() {
           whileInView="show"
           viewport={{ once: true, amount: 0.12 }}
         >
-          {newsletterPosts.map((post) => (
+          {newsletter.posts.map((post) => (
             <motion.article key={post.href} variants={staggerItem}>
-              <a
-                href={post.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block"
-              >
-                <div className="flex  w-full items-center justify-center overflow-hidden rounded-xl bg-white">
+              <a href={post.href} target="_blank" rel="noopener noreferrer" className="group block">
+                <div className="flex w-full items-center justify-center overflow-hidden rounded-xl bg-white">
                   <img
                     src={post.image}
                     alt={post.alt}
@@ -57,7 +58,7 @@ export default function NewsletterSection() {
         >
           <ButtonCTA
             href={siteConfig.externalLinks.newsletter}
-            label="Ver newsletter"
+            label={ui.viewNewsletter}
             variant="dark"
             icon="none"
             external

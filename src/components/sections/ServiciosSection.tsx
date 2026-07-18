@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Container from "@/components/common/Container";
 import SectionHeading from "@/components/common/SectionHeading";
 import ButtonCTA from "@/components/common/ButtonCTA";
-import { services } from "@/data/siteContent";
+import type { SiteContent } from "@/i18n";
 import { buildWhatsAppUrl } from "@/utils/helpers";
 import { fadeInView, sectionReveal, staggerItem, staggerList } from "@/utils/motion";
 
@@ -11,12 +11,16 @@ function ServiceCell({
   tag,
   title,
   description,
+  ctaLabel,
+  whatsappMessage,
   className = ""
 }: {
   number: string;
   tag: string;
   title: string;
   description: string;
+  ctaLabel: string;
+  whatsappMessage: string;
   className?: string;
 }) {
   return (
@@ -38,8 +42,8 @@ function ServiceCell({
 
       <div className="mt-8 md:mt-10">
         <ButtonCTA
-          href={buildWhatsAppUrl()}
-          label="Agenda una reunión"
+          href={buildWhatsAppUrl(whatsappMessage)}
+          label={ctaLabel}
           variant="white"
           icon="none"
           external
@@ -50,15 +54,21 @@ function ServiceCell({
   );
 }
 
-export default function ServiciosSection() {
+type ServiciosSectionProps = {
+  content: SiteContent;
+};
+
+export default function ServiciosSection({ content }: ServiciosSectionProps) {
+  const { servicios, ui, whatsappMessage } = content;
+
   return (
     <motion.section id="servicios" className="pb-16 pt-4 md:pb-24 md:pt-2" {...sectionReveal}>
       <Container>
         <motion.div {...fadeInView}>
           <SectionHeading
-            eyebrow="Servicios"
-            titleSans="Formas de "
-            titleSerif="trabajar juntos."
+            eyebrow={servicios.eyebrow}
+            titleSans={servicios.titleSans}
+            titleSerif={servicios.titleSerif}
             className="mb-8 md:mb-12"
           />
         </motion.div>
@@ -71,7 +81,7 @@ export default function ServiciosSection() {
           viewport={{ once: true, amount: 0.12 }}
         >
           <div className="grid md:grid-cols-2">
-            {services.map((service, index) => (
+            {servicios.items.map((service, index) => (
               <motion.div
                 key={service.number}
                 variants={staggerItem}
@@ -82,7 +92,11 @@ export default function ServiciosSection() {
                   .filter(Boolean)
                   .join(" ")}
               >
-                <ServiceCell {...service} />
+                <ServiceCell
+                  {...service}
+                  ctaLabel={ui.bookMeeting}
+                  whatsappMessage={whatsappMessage}
+                />
               </motion.div>
             ))}
           </div>
