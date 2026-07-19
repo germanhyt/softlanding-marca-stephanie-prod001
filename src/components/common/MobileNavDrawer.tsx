@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
 import { FiX } from "react-icons/fi";
+import ButtonCTA from "@/components/common/ButtonCTA";
 import LanguageSwitcher from "@/components/common/LanguageSwitcher";
 import type { Locale } from "@/i18n";
 import type { NavLink } from "@/i18n/types";
@@ -12,10 +13,12 @@ type MobileNavDrawerProps = {
   onClose: () => void;
   navLinks: NavLink[];
   locale: Locale;
+  whatsappUrl: string;
   labels: {
     menu: string;
     closeMenu: string;
     navAria: string;
+    letsTalk: string;
     languageSwitchAria: string;
     languageEs: string;
     languageEn: string;
@@ -27,6 +30,7 @@ export default function MobileNavDrawer({
   onClose,
   navLinks,
   locale,
+  whatsappUrl,
   labels
 }: MobileNavDrawerProps) {
   useEffect(() => {
@@ -98,7 +102,15 @@ export default function MobileNavDrawer({
               ))}
             </ul>
 
-            <div className="border-t border-primary-dark/10 px-5 py-4 sm:hidden">
+            <div className="space-y-4 border-t border-primary-dark/10 px-5 py-5 sm:hidden">
+              <ButtonCTA
+                href={whatsappUrl}
+                label={labels.letsTalk}
+                variant="dark"
+                icon="none"
+                external
+                className="w-full justify-center"
+              />
               <LanguageSwitcher
                 locale={locale}
                 labels={{

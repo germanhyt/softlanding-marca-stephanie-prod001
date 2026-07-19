@@ -27,10 +27,12 @@ export default function HeroSection({ content }: HeroSectionProps) {
         onClose={() => setIsMenuOpen(false)}
         navLinks={content.nav}
         locale={content.locale}
+        whatsappUrl={buildWhatsAppUrl(content.whatsappMessage)}
         labels={{
           menu: ui.menu,
           closeMenu: ui.closeMenu,
           navAria: ui.menu,
+          letsTalk: ui.letsTalk,
           languageSwitchAria: ui.languageSwitchAria,
           languageEs: ui.languageEs,
           languageEn: ui.languageEn
@@ -39,7 +41,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
 
       <Container>
         <motion.header
-          className="mb-10 flex items-center justify-between gap-4 md:mb-14"
+          className="mb-14 flex items-center justify-between gap-4 md:mb-16"
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: easeOut }}
@@ -71,7 +73,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
               variant="dark"
               icon="none"
               external
-              className="px-5 py-2.5 text-xs md:text-sm"
+              className="hidden px-5 py-2.5 text-xs sm:inline-flex md:text-sm"
             />
             <button
               type="button"
