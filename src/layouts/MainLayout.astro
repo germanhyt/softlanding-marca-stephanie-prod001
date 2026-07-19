@@ -56,12 +56,30 @@ const alternateLinks = locales.map((code) => ({
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={image} />
+    <meta property="og:image:alt" content={seo.ogImageAlt} />
     <meta property="og:site_name" content={siteConfig.siteName} />
     <meta property="og:locale" content={seo.ogLocale} />
+    <meta property="og:locale:alternate" content={seo.ogLocaleAlternate} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
+    <meta name="twitter:image:alt" content={seo.ogImageAlt} />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: siteConfig.author,
+        jobTitle: siteConfig.role,
+        url: canonical,
+        email: siteConfig.contact.email,
+        sameAs: [siteConfig.externalLinks.linkedin, siteConfig.externalLinks.newsletter],
+        image: image,
+        description: description
+      })}
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

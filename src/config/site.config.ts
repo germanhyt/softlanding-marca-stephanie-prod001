@@ -1,6 +1,6 @@
 const defaultSiteUrl =
   import.meta.env.SITE ??
-  (import.meta.env.VERCEL_URL ? `https://${import.meta.env.VERCEL_URL}` : "https://www.stephaniehoyle.com");
+  (import.meta.env.VERCEL_URL ? `https://${import.meta.env.VERCEL_URL}` : "https://stephaniehoyle.com");
 
 export const siteConfig = {
   siteUrl: defaultSiteUrl,

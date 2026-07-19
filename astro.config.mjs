@@ -6,7 +6,7 @@ import sitemap from "@astrojs/sitemap";
 
 const site =
   process.env.SITE_URL ??
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://www.stephaniehoyle.com");
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://stephaniehoyle.com");
 
 // GitHub Pages usa subpath; Vercel sirve desde la raíz.
 const base = process.env.BASE_PATH ?? "/";
@@ -32,8 +32,8 @@ export default defineConfig({
       i18n: {
         defaultLocale: "es",
         locales: {
-          es: "es-PE",
-          en: "en-US"
+          es: "es",
+          en: "en"
         }
       }
     })

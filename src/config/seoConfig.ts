@@ -5,6 +5,7 @@ export function getSeoConfig(locale: Locale) {
   const content = getSiteContent(locale);
   const path = locale === "es" ? "/" : `/${locale}/`;
   const canonical = new URL(path, siteConfig.siteUrl).toString();
+  const alternateLocale = locale === "es" ? "en_US" : "es_PE";
 
   return {
     title: content.seo.title,
@@ -12,7 +13,9 @@ export function getSeoConfig(locale: Locale) {
     keywords: content.seo.keywords,
     canonical,
     ogImage: `${siteConfig.siteUrl}/images/hero-banner.webp`,
+    ogImageAlt: content.hero.imageAlt,
     htmlLang: content.htmlLang,
-    ogLocale: content.ogLocale
+    ogLocale: content.ogLocale,
+    ogLocaleAlternate: alternateLocale
   };
 }
