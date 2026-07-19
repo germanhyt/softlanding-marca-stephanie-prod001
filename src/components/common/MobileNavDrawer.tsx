@@ -75,42 +75,52 @@ export default function MobileNavDrawer({
               </button>
             </div>
 
-            <ul className="flex-1 overflow-y-auto px-4 py-6">
-              {navLinks.map((item, index) => (
-                <motion.li
-                  key={item.label}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.08 + index * 0.06, duration: 0.35, ease: easeOut }}
-                >
-                  <a
-                    href={item.href}
-                    target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noopener noreferrer" : undefined}
-                    onClick={(event) => {
-                      if (!item.external && handleHashNavigation(event, item.href)) {
-                        onClose();
-                      } else if (!item.external) {
-                        onClose();
-                      }
-                    }}
-                    className="block rounded-lg px-3 py-3.5 text-base font-medium text-text-main transition-colors hover:bg-background-contrast"
+            <div className="flex-1 overflow-y-auto px-4 py-6">
+              <ul>
+                {navLinks.map((item, index) => (
+                  <motion.li
+                    key={item.label}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.08 + index * 0.06, duration: 0.35, ease: easeOut }}
                   >
-                    {item.label}
-                  </a>
-                </motion.li>
-              ))}
-            </ul>
+                    <a
+                      href={item.href}
+                      target={item.external ? "_blank" : undefined}
+                      rel={item.external ? "noopener noreferrer" : undefined}
+                      onClick={(event) => {
+                        if (!item.external && handleHashNavigation(event, item.href)) {
+                          onClose();
+                        } else if (!item.external) {
+                          onClose();
+                        }
+                      }}
+                      className="block rounded-lg px-3 py-3.5 text-base font-medium text-text-main transition-colors hover:bg-background-contrast"
+                    >
+                      {item.label}
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
 
-            <div className="space-y-4 border-t border-primary-dark/10 px-5 py-5 sm:hidden">
-              <ButtonCTA
-                href={whatsappUrl}
-                label={labels.letsTalk}
-                variant="dark"
-                icon="none"
-                external
-                className="w-full justify-center"
-              />
+              <motion.div
+                className="mt-6 px-3 sm:hidden"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.08 + navLinks.length * 0.06, duration: 0.35, ease: easeOut }}
+              >
+                <ButtonCTA
+                  href={whatsappUrl}
+                  label={labels.letsTalk}
+                  variant="dark"
+                  icon="none"
+                  external
+                  className="w-full justify-center"
+                />
+              </motion.div>
+            </div>
+
+            <div className="border-t border-primary-dark/10 px-5 py-4 sm:hidden">
               <LanguageSwitcher
                 locale={locale}
                 labels={{
