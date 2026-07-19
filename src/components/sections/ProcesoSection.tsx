@@ -72,7 +72,7 @@ export default function ProcesoSection({ content }: ProcesoSectionProps) {
           transition={{ duration: 0.55, delay: 0.15, ease: easeOut }}
         >
           <hr className="border-t border-text-dark/20" />
-          <p className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 bg-background-base px-4 font-serif text-base italic text-text-dark md:text-lg">
+          <p className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap bg-background-base px-3 font-serif text-sm italic text-text-dark sm:px-4 sm:text-base md:text-lg">
             {proceso.circularNote}
           </p>
         </motion.div>
